@@ -5,35 +5,43 @@
     <img src="assets/registro.png" alt="Logo" />
   </div>
 
-  <div class="register-form">
-    <h2>REGISTRARSE</h2>
-    <div class="form-input">
-      <label for="username">Nombre de usuario:</label>
-      <input type="text" id="username" name="username" required>
+  
+  <div class="Register">
+    <div class="logo-head">
+      <img src="assets/logo.png" alt="Logo" />
+      <h1>TaskHub</h1>
     </div>
-    <div class="form-input">
-      <label for="password">Correo:</label>
-      <input type="password" id="correo" name="password" required>
-    </div>
-    <div class="form-input">
-      <label for="password">Nombres:</label>
-      <input type="password" id="nombres" name="password" required>
-    </div>
-    <div class="form-input">
-      <label for="password">Apellidos:</label>
-      <input type="password" id="apellidos" name="password" required>
-    </div>
-    <div class="form-input">
-      <label for="username">Contraseña:</label>
-      <input type="text" id="password" name="username" required>
-    </div>
-    <div class="form-input">
-      <label for="password">Confirmar Contraseña:</label>
-      <input type="password" id="confirm" name="password" required>
-    </div>
-    <button class="form-submit">ACEPTAR</button>
-    <div class="form-footer">
-      <p>¿Ya tienes una cuenta?<a href="#" [routerLink]="['/login']"> Inicia Sesión</a></p>
+    
+    <div class="register-form">
+      <h2 style="margin-bottom: 30px;">REGISTRARSE</h2>
+      <div class="form-input">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-input">
+        <label for="password">Correo:</label>
+        <input type="password" id="correo" name="password" required>
+      </div>
+      <div class="form-input">
+        <label for="password">Nombres:</label>
+        <input type="password" id="nombres" name="password" required>
+      </div>
+      <div class="form-input">
+        <label for="password">Apellidos:</label>
+        <input type="password" id="apellidos" name="password" required>
+      </div>
+      <div class="form-input">
+        <label for="username">Contraseña:</label>
+        <input type="text" id="password" name="username" required>
+      </div>
+      <div class="form-input">
+        <label for="password">Confirmar Contraseña:</label>
+        <input type="password" id="confirm" name="password" required>
+      </div>
+      <button class="form-submit">ACEPTAR</button>
+      <div class="form-footer">
+        <p>¿Ya tienes una cuenta?<a href="#" [routerLink]="['/login']"> Inicia Sesión</a></p>
+      </div>
     </div>
   </div>
 </div>

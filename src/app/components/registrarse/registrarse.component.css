@@ -19,8 +19,27 @@
   height: 490px;
 }
 
+.Register{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo-head{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: blueviolet;
+}
+
+.logo-head img{
+  width: 10%;
+}
+
 .register-form {
-  padding: 70px;
+  padding: 50px 70px 70px 70px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   background: white;
