@@ -1,5 +1,6 @@
-.container{
+.contain{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 95%;
@@ -55,18 +56,37 @@
     text-align: center;
 }
 
+.calendar{
+    background-color: white;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+    border-radius: 5px;
+    height: 42rem;
+}
+.full-calendar{
+    height: 100%;
+}
+
+/* .fc-button-primary{
+    background-color: #47c2ca !important;
+}
+.fc-dom-1{
+    text-transform: capitalize !important;
+} */
+
 @media (min-width: 700px ) {
     .form{
         flex-direction: row;
         justify-content: center;
     }
-    .container{
+    .contain{
         width: 85%;
     }
 }
 
 @media (min-width: 1024px ) { /* de 900 en adelante */
-    .container{
+    .contain{
         width: 80%;
     }
     

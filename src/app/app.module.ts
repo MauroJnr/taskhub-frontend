@@ -8,6 +8,7 @@ import { RegistrarseComponent } from './components/registrarse/registrarse.compo
 import { MenuComponent } from './components/menu/menu.component';
 import { MainCalendarComponent } from './pages/main-calendar/main-calendar.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
