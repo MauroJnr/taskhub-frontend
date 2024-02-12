@@ -1,0 +1,81 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.filtro{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+}
+
+.filtro-fecha h3{
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.date{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.form input{
+    font-size: 1.1rem;
+    padding: 0.4rem;
+}
+
+.butn{
+    padding: 0.7rem;
+    background-color: #48D7E0;
+    font-size: 1.1rem;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    width: 8rem;
+    cursor: pointer;
+}
+.butn:hover{
+    background-color: #47c2ca;
+}
+
+.crear{
+    margin-top: 1rem;
+    text-align: center;
+}
+
+@media (min-width: 700px ) {
+    .form{
+        flex-direction: row;
+        justify-content: center;
+    }
+    .container{
+        width: 85%;
+    }
+}
+
+@media (min-width: 1024px ) { /* de 900 en adelante */
+    .container{
+        width: 80%;
+    }
+    
+    .filtro{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
+        font-size: 1.1rem;
+    }
+
+    
+}
