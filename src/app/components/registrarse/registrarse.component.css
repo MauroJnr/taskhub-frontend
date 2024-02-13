@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: row;
   height: 100vh;
-  padding: 0 20px;
+  padding: 20px 0px 20px 0px;
 }
 
 .login {
@@ -39,10 +39,11 @@
 }
 
 .register-form {
-  padding: 50px 70px 70px 70px;
-  border-radius: 5px;
+  padding: 40px 70px 50px 70px;
+  border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   background: white;
+  border: 1px solid #7C3AED
 }
 
 h2 {
