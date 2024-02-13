@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .logo{
@@ -57,17 +57,17 @@ h2 {
 
 .form-input input {
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0.5rem;  
   margin-top: 0.5rem;
-  border: 1px solid #7C3AED; /* #dd */
+  border: 1px solid #ddd; /* 7C3AED */
   border-radius: 5px;
 }
 
 .form-submit {
   width: 100%;
   padding: 0.8rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 5px;
   background-color: #7C3AED;
   color: white;

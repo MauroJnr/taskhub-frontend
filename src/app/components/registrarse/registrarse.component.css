@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  height: 100vh;
+  height: 100%;
   padding: 0 20px;
 }
 
@@ -81,4 +81,16 @@ h2 {
 .form-footer a {
   color: #7C3AED;
   text-decoration: none;
+}
+
+@media (max-width: 1000px ) { /* de 900 en adelante */
+  .register-container {
+    height: auto;
+    flex-direction: column-reverse;
+    padding: 3rem;
+  }
+
+  .logo {
+    margin-top: 2rem;
+  }
 }
