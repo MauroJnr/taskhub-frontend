@@ -31,7 +31,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
-  color: blueviolet;
+  color: #7C3AED;
 }
 
 .logo-head img{
@@ -67,7 +67,8 @@ h2 {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #5fbae9;
+  background-color: #7C3AED;
+  font-size: 1rem;
   color: white;
   cursor: pointer;
 }
@@ -78,6 +79,6 @@ h2 {
 }
 
 .form-footer a {
-  color: #5fbae9;
+  color: #7C3AED;
   text-decoration: none;
 }
