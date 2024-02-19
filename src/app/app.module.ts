@@ -10,6 +10,10 @@ import { MainCalendarComponent } from './pages/main-calendar/main-calendar.compo
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
+import { KanbanComponent } from './components/kanban/kanban.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { KanbanListComponent } from './components/kanban-list/kanban-list.component';
+import { KanbanTaskComponent } from './components/kanban-task/kanban-task.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +23,16 @@ import { EditarperfilComponent } from './components/editarperfil/editarperfil.co
     MenuComponent,
     MainCalendarComponent,
     CalendarComponent,
-    EditarperfilComponent
+    EditarperfilComponent,
+    KanbanComponent,
+    KanbanListComponent,
+    KanbanTaskComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FullCalendarModule
+    FullCalendarModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

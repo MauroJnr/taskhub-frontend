@@ -1,0 +1,16 @@
+<p>kanban works!</p>
+
+<app-kanban-list 
+    cdkDropList
+    cdkDragPreviewContainer="parent"
+    [cdkDropListData]="heroNames"
+    (cdkDropListDropped)="moveTask($event)"
+    [heroNames]="heroNames"
+>
+</app-kanban-list>
+
+<!-- <app-kanban-list 
+    cdkDropList
+    cdkDragPreviewContainer="parent"
+>
+</app-kanban-list> -->

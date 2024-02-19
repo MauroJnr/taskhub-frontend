@@ -29,7 +29,8 @@
 
     <!-- calendar -->
     <div class="calendar">
-        <full-calendar class="full-calendar" [options]="calendarOptions"></full-calendar>
+        <full-calendar *ngIf="false" class="full-calendar" [options]="calendarOptions"></full-calendar>
+        <app-kanban *ngIf="true"></app-kanban>
     </div>
 </div>
 
