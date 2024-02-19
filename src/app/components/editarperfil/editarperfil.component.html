@@ -1,17 +1,41 @@
+<div class="logo-head">
+    <img src="assets/logo.png" alt="Logo" />
+    <h1>TaskHub</h1>
+</div>
 <div class="EPerfil-container">
-    <div class="logo">
-        <img src="assets/login.png" alt="Logo" />
+
+    <div class="ICON">
+        <img src="assets\icoP.png" alt="ICON" />
     </div>
 
     <div class="EPerfil">
-        <div class="logo-head">
-            <img src="assets/logo.png" alt="Logo" />
-            <h1>TaskHub</h1>
-        </div>
 
         <div class="EPerfil-form">
             <h2>EDITAR PERFIL</h2>
+            <div class="form-input">
+                <label for="nombres">Nombres</label>
+                <input type="text" id="nombres" name="nombres" required>
+            </div>
+
+            <div class="form-input">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+            </div>
+
+            <div class="form-input">
+                <label for="userPassword">Contraseña</label>
+                <input type="text" id="password" name="password" required>
+            </div>
+
+            <div class="form-input">
+                <label for="userPassword">Confirmar Contraseña</label>
+                <input type="text" id="password" name="password" required>
+            </div>
 
         </div>
     </div>
+</div>
+<div class="buttons">
+    <button class="form-cancel" (click)="Cancel()" >Cancelar</button>
+    <button class="form-save" (click)="saveChangues()" >Guardar</button>
 </div>

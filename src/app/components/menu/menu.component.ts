@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -10,5 +10,16 @@ export class MenuComponent {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    const menu = document.querySelector('.dropdown-menu');
+    const userIcon = document.querySelector('.user');
+
+    if (!menu?.contains(target) && !userIcon?.contains(target)) {
+      this.isMenuOpen = false;
+    }
   }
 }

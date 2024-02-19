@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormGroup} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-editarperfil',
@@ -8,13 +8,18 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./editarperfil.component.css']
 })
 export class EditarperfilComponent {
-  usernameValue: string = 'ejemplo1@correo.com';
+
+  nombres:string = 'nombre1 nombre2'
+  apellidos:string = 'apellidop apellidom'
   userPassword: string = 'contraUsuario1';
 
+  constructor( private router: Router) {  }
 
-  constructor(private router: Router) { }
-
-  redirectToMain() {
+  saveChangues() {
+    // Aquí puedes guardar los cambios en el perfil del usuario
+    this.router.navigate(['/main']);
+  }
+  Cancel() {
     this.router.navigate(['/main']);
   }
 }

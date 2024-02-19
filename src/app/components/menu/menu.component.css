@@ -8,29 +8,33 @@
     margin: 0 auto;
 }
 
-.floating-menu {
+.dropdown-menu {
     position: absolute;
-    top: 60px; /* Ajusta la posición según sea necesario */
-    right: 10%; /* Ajusta la posición según sea necesario */
+    top: 60px; 
+    right: 10%; 
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    display:flex; /* El menú está oculto por defecto */
+    display:block; 
 }
 
-.floating-menu ul {
+.dropdown-menu ul {
     list-style-type: none;
     padding: 0;
 }
 
-.floating-menu ul li {
+.dropdown-menu ul li {
     padding: 5px 10px;
     cursor: pointer;
 }
 
-.floating-menu ul li:hover {
+.dropdown-menu ul li a{
+    text-decoration: none;
+}
+
+.dropdown-menu ul li:hover {
     background-color: #f0f0f0;
 }
 
