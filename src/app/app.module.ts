@@ -14,6 +14,8 @@ import { KanbanComponent } from './components/kanban/kanban.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { KanbanListComponent } from './components/kanban-list/kanban-list.component';
 import { KanbanTaskComponent } from './components/kanban-task/kanban-task.component';
+import { FloatingSuccessComponent } from './components/floating-success/floating-success.component';
+import { FloatingSuccessService } from './components/floating-success/floating-success.service';
 
 @NgModule({
   declarations: [
@@ -27,14 +29,15 @@ import { KanbanTaskComponent } from './components/kanban-task/kanban-task.compon
     KanbanComponent,
     KanbanListComponent,
     KanbanTaskComponent,
+    FloatingSuccessComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FullCalendarModule,
-    DragDropModule
+    DragDropModule,
   ],
-  providers: [],
+  providers: [FloatingSuccessService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

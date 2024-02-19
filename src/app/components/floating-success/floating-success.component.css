@@ -1,0 +1,28 @@
+.floating-success {
+    width: 18rem;
+    height: 12rem; 
+    position: fixed;
+    text-align: center;
+    top: 45%;
+    right: 31%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.floating-success img{
+    margin-top: 0.9rem;
+    width: 5.3rem;
+}
+  
+.floating-success button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
