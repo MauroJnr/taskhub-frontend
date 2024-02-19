@@ -7,6 +7,7 @@ import { Component, HostListener } from '@angular/core';
 })
 export class MenuComponent {
   isMenuOpen: boolean = false;
+  animationState = 'closeMenu';
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
