@@ -4,8 +4,10 @@
     justify-content: space-between;
     align-items: center;
     width: 95%;
+    height: auto;
     margin: 0 auto;
     margin-top: 2rem;
+    /* margin-bottom: 1rem; */
 }
 
 .filtro{
@@ -59,21 +61,18 @@
 .calendar{
     background-color: white;
     padding: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
     width: 100%;
     border-radius: 5px;
-    height: 42rem;
+    /* height: 42rem; */
+    /* height: 100rem; */
+    height: auto;
+
+    border: 1px solid black;
 }
 .full-calendar{
     height: 100%;
 }
-
-/* .fc-button-primary{
-    background-color: #47c2ca !important;
-}
-.fc-dom-1{
-    text-transform: capitalize !important;
-} */
 
 @media (min-width: 700px ) {
     .form{
@@ -82,12 +81,18 @@
     }
     .contain{
         width: 85%;
+        height: 48rem;
+    }
+    .calendar{
+        margin-top: 0.8rem;
+        height: 40rem;
     }
 }
 
-@media (min-width: 1024px ) { /* de 900 en adelante */
+@media (min-width: 1000px ) { /* de 1000 en adelante */
     .contain{
-        width: 80%;
+        width: 85%;
+        /* height: 49rem; */
     }
     
     .filtro{
@@ -97,5 +102,6 @@
         font-size: 1.1rem;
     }
 
+    
     
 }

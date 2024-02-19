@@ -1,13 +1,34 @@
-<p>kanban works!</p>
+<!-- <p>kanban works!</p> -->
 
-<app-kanban-list 
-    cdkDropList
-    cdkDragPreviewContainer="parent"
-    [cdkDropListData]="heroNames"
-    (cdkDropListDropped)="moveTask($event)"
-    [heroNames]="heroNames"
->
-</app-kanban-list>
+<div class="kanban-board">
+    <app-kanban-list 
+        class="kanban-list"
+        cdkDropList
+        cdkDragPreviewContainer="parent"
+        [cdkDropListData]="heroNames"
+        (cdkDropListDropped)="moveTask($event)"
+        [heroNames]="heroNames"
+    >
+    </app-kanban-list>
+    <app-kanban-list 
+        class="kanban-list"
+        cdkDropList
+        cdkDragPreviewContainer="parent"
+        [cdkDropListData]="heroNames"
+        (cdkDropListDropped)="moveTask($event)"
+        [heroNames]="heroNames"
+    >
+    </app-kanban-list>
+    <app-kanban-list
+        class="kanban-list"
+        cdkDropList
+        cdkDragPreviewContainer="parent"
+        [cdkDropListData]="heroNames"
+        (cdkDropListDropped)="moveTask($event)"
+        [heroNames]="heroNames"
+    >
+    </app-kanban-list>
+</div>
 
 <!-- <app-kanban-list 
     cdkDropList
