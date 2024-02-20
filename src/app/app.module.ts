@@ -16,6 +16,8 @@ import { KanbanListComponent } from './components/kanban-list/kanban-list.compon
 import { KanbanTaskComponent } from './components/kanban-task/kanban-task.component';
 import { FloatingSuccessComponent } from './components/floating-success/floating-success.component';
 import { FloatingSuccessService } from './components/floating-success/floating-success.service';
+import { FloatingDeleteComponent } from './components/floating-delete/floating-delete.component';
+import { FloatingDeleteService } from './components/floating-delete/floating-delete.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { FloatingSuccessService } from './components/floating-success/floating-s
     KanbanListComponent,
     KanbanTaskComponent,
     FloatingSuccessComponent,
+    FloatingDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { FloatingSuccessService } from './components/floating-success/floating-s
     FullCalendarModule,
     DragDropModule,
   ],
-  providers: [FloatingSuccessService],
+  providers: [FloatingSuccessService,FloatingDeleteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

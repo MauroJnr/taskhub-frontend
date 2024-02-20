@@ -1,0 +1,9 @@
+<div class="floating-delete" *ngIf="isOpen">
+    <img src="assets\delete.png" alt="delete">
+    <div>   
+        <span>Eliminar Tarea</span><br>
+        <span>¿Está seguro que desea eliminar la tarea?</span>
+    </div>
+    <button class="close" (click)="close()">X</button>
+    <button class="btdelete" (click)="close()">Eliminar</button>
+</div>
