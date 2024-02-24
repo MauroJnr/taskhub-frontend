@@ -1,37 +1,36 @@
 <!-- <p>kanban works!</p> -->
 
-<div class="kanban-board">
+<div class="kanban-board" cdkDropListGroup cdkDropList>
+    <!-- a cada app-kanban-list le pasar la lista tareas [heroNames]="heroNames" -->
     <app-kanban-list 
+        *ngFor="let list of allTasks;"
         class="kanban-list"
         cdkDropList
         cdkDragPreviewContainer="parent"
-        [cdkDropListData]="heroNames"
+        [cdkDropListData]="list.tasks"
         (cdkDropListDropped)="moveTask($event)"
-        [heroNames]="heroNames"
+        [tasks]="list.tasks"
+        [title]="list.title"
     >
     </app-kanban-list>
-    <app-kanban-list 
+    <!-- <app-kanban-list 
         class="kanban-list"
         cdkDropList
         cdkDragPreviewContainer="parent"
-        [cdkDropListData]="heroNames"
-        (cdkDropListDropped)="moveTask($event)"
-        [heroNames]="heroNames"
+        [cdkDropListData]="tasksProgreso"
+        (cdkDropListDropped)="moveTask($event,tasksProgreso)"
+        [tasks]="tasksProgreso"
+        [title]="tituloList.enProgreso"
     >
     </app-kanban-list>
     <app-kanban-list
         class="kanban-list"
         cdkDropList
         cdkDragPreviewContainer="parent"
-        [cdkDropListData]="heroNames"
-        (cdkDropListDropped)="moveTask($event)"
-        [heroNames]="heroNames"
+        [cdkDropListData]="tasksTerminado"
+        (cdkDropListDropped)="moveTask($event,tasksTerminado)"
+        [tasks]="tasksTerminado"
+        [title]="tituloList.terminado"
     >
-    </app-kanban-list>
+    </app-kanban-list> -->
 </div>
-
-<!-- <app-kanban-list 
-    cdkDropList
-    cdkDragPreviewContainer="parent"
->
-</app-kanban-list> -->

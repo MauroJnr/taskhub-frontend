@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
+import { TasksService } from 'app/services/app.service';
 
 @Component({
   selector: 'app-kanban',
@@ -7,44 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./kanban.component.css']
 })
 export class KanbanComponent {
-  public heroNames: string[] = ['Spiderman','Ironman','Hulk','She Hulk', 'Thor'];
+  // lista original de tareas
 
-
-  moveTask(dropEvent: CdkDragDrop<string[]>): void{
-    // console.log('even')
-    // console.log(this.heroNames)
-    const { container, previousIndex, currentIndex } =
-      dropEvent;
-
-    if (previousIndex === currentIndex) {
-      return;
-    }
-
-    // this.heroNames.filter((list) => list !== listToRemove);
-    moveItemInArray(this.heroNames, previousIndex, currentIndex);
-
-    // this.reorderTask(
-    //   container.data,
-    //   previousIndex,
-    //   currentIndex
-    // )
-
-
-    // isSameContainer
-    //   ? this.kanbanService.reorderTask(
-    //       container.data,
-    //       previousIndex,
-    //       currentIndex
-    //     )
-    //   : this.kanbanService.transferTask({
-    //       fromList: previousContainer.data,
-    //       toList: container.data,
-    //       fromIndex: previousIndex,
-    //       toIndex: currentIndex,
-    //     });
+  constructor(private tasksService: TasksService){ // colocar el servicio es private es buena práctica
+    
   }
 
-  // reorderTask(list: KanbanList, fromIndex: number, toIndex: number): void {
-  //   moveItemInArray(list.tasks, fromIndex, toIndex);
-  // }
+  get allTasks(){
+    return [...this.tasksService.allTasks];
+  }
+
+  moveTask(dropEvent: CdkDragDrop<any[]>): void{
+    this.tasksService.moveTask(dropEvent)
+  }
+
 }

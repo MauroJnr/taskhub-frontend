@@ -1,12 +1,14 @@
 <!-- <p>kanban-list works!</p> -->
 
-<div class="title">
-    <h1>Por Realizar</h1>
-</div>
-<div class="list">
-    <app-kanban-task 
-        cdkDrag *ngFor="let n of heroNames" [task]="n">
-    </app-kanban-task>
+<div class="content-list">
+    <div class="title">
+        <h1>{{title}}</h1>
+    </div>
+    <div class="list">
+        <app-kanban-task 
+            cdkDrag *ngFor="let n of tasks" [task]="n" cdkDragPreviewContainer="parent">
+        </app-kanban-task>
+    </div>
 </div>
 <!-- <app-kanban-task cdkDrag></app-kanban-task>
 <app-kanban-task cdkDrag></app-kanban-task> -->

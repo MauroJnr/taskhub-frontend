@@ -1,18 +1,19 @@
-<div class="task"
+<div class="task" 
 >
     <div class="task-header">
-        <h1>{{task}}</h1>
-        <p class="prioridad alta">Prioridad</p>
+        <h1>{{task.titulo}}</h1>
+        <p class="prioridad" [ngClass]="{'alta': (task.prioridad == 'Alta'), 'media': (task.prioridad == 'Media'), 'baja': (task.prioridad == 'Baja')}">{{task.prioridad}}</p>
     </div>
 
     <div class="fecha">
+        <!-- 22 Feb 2024 -->
         <img class="icon" src="assets/fecha.svg" alt="">
-        <p>Vence: 22 Feb 2024</p>
+        <p>Vence: {{task.fecha}}</p>
         <img class="icon" src="assets/description.svg" alt="">
     </div>
 
     <div class="buttons">
-        <button class="btn editar">
+        <button class="btn editar" (click)="editarTask()">
             <img class="icon" src="assets/editar.svg" alt="">
             <p>Editar</p>
         </button>

@@ -8,9 +8,16 @@ import { Component, Input } from '@angular/core';
 export class KanbanTaskComponent {
 
   @Input()
-  public task = "Tarea 1"
-  // public task = {
-  //   name: "Tarea 1"
-  // }
+  public task = {
+    id: 1,
+    titulo: "Completar informe mensual",
+    fecha: "2024-02-25",
+    descripcion: "El informe mensual debe incluir análisis de ventas y proyecciones para el próximo mes.",
+    prioridad: "Alta",
+    estado: "Pendiente"
+  };
 
+  editarTask(){
+    console.log("Editar")
+  }
 }
