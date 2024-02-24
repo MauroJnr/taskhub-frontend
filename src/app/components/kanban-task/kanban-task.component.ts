@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { FloatingDeleteService } from '../floating-delete/floating-delete.service';
 
 @Component({
   selector: 'app-kanban-task',
@@ -19,5 +21,19 @@ export class KanbanTaskComponent {
 
   editarTask(){
     console.log("Editar")
+  }
+
+  constructor( private router: Router, private floatingDeleteService:FloatingDeleteService) {  }
+
+  Delete() {
+    // Aquí puedes guardar los cambios en el perfil del usuario
+    this.floatingDeleteService.openSuccess();
+
+    // Suscribe al observable que indica el estado de la ventana flotante
+    this.floatingDeleteService.isOpen$.subscribe(isOpen => {
+      if (!isOpen) {
+        this.router.navigate(['/main']); // Cambia 'ruta-deseada' por la ruta a la que quieres redirigir
+      }
+    });
   }
 }

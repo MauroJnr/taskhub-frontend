@@ -1,0 +1,49 @@
+.floating-delete {
+    width: 25rem;
+    height: 18rem; 
+    position: fixed;
+    text-align: center;
+    top: 45%;
+    right: 24%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.floating-delete img{
+    margin-top: 0.9rem;
+    margin-bottom: 1rem;
+    width: 5.3rem;
+}
+  
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btdelete{
+    position: absolute;
+    top: 66%;
+    right: 30%;
+    margin-top: 0;
+    padding: 0.6rem 3rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 0;
+    background-color: #FF5959;
+    margin-right: 0; 
+}
+
+.btdelete:hover{
+    background-color: #b53636;
+}
