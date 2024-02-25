@@ -20,19 +20,23 @@ export class KanbanTaskComponent {
   };
 
   editarTask(){
-    console.log("Editar")
+    // console.log("Editar")
+    console.log(this.task)
   }
 
   constructor( private router: Router, private floatingDeleteService:FloatingDeleteService) {  }
 
   Delete() {
+
+    this.floatingDeleteService.tituloTarea = this.task.titulo;
+
     // Aquí puedes guardar los cambios en el perfil del usuario
     this.floatingDeleteService.openSuccess();
 
     // Suscribe al observable que indica el estado de la ventana flotante
     this.floatingDeleteService.isOpen$.subscribe(isOpen => {
       if (!isOpen) {
-        this.router.navigate(['/main']); // Cambia 'ruta-deseada' por la ruta a la que quieres redirigir
+        this.router.navigate(['/main/calendar']); // Cambia 'ruta-deseada' por la ruta a la que quieres redirigir
       }
     });
   }

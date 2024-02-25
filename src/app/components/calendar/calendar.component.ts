@@ -16,6 +16,7 @@ export class CalendarComponent {
     plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
     locale: esLocale,
+    eventClick: (info) => this.clickEvent(info),
     headerToolbar:{
       left: 'title',
       center: 'prev,next',
@@ -24,14 +25,29 @@ export class CalendarComponent {
     editable: true,
     weekends: true,
     events: [
-      { title: 'Reunión', start: new Date() }
+      { title: 'Reunión', start: new Date(), id: "1" }
     ]
   };
+
+  clickEvent (info:any) {
+
+    // DOBLE CLICK AL ELEMENTO DEBE ABRIR EL EDITOR DE TAREAS
+    info.el.ondblclick = function() {
+      console.log('Event: ', info.event);
+      console.log('Event: ', info.event.title);
+      console.log('Event: ', info.event.start);
+      console.log('Event: ', info.event.id);
+    };
+
+    // info.el.style.borderColor = 'red';
+
+  }
 
   calendar:boolean = true;
   kanban:boolean = false;
   filtro:boolean = false
 
+  // para mostrar las distintas vistas
   mostrarCalendar(){
     this.calendar = true;
     this.kanban = false;

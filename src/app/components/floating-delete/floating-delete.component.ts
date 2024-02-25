@@ -18,4 +18,9 @@ export class FloatingDeleteComponent {
   close() {
     this.floatingDeleteService.closeSuccess();
   }
+
+  getTituloTarea(){
+    return this.floatingDeleteService.tituloTarea;
+  }
+
 }

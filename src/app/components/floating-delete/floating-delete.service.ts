@@ -8,6 +8,8 @@ export class FloatingDeleteService {
   private isOpenSubject = new Subject<boolean>();
   isOpen$ = this.isOpenSubject.asObservable();
 
+  tituloTarea = ""
+
   openSuccess() {
     this.isOpenSubject.next(true);
   }
