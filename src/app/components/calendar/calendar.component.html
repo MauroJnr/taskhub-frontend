@@ -13,12 +13,16 @@
                     <p>a</p>
                     <input type="datetime-local">
                 </div>
-                <button class="butn filtro-tarea">Filtrar</button>
+                <button class="butn filtro-tarea" (click)="filtrarTareas()">Filtrar</button>
             </div>
         </div>
 
         <div class="crear">
             <button class="butn crear-tarea">+ Crear</button>
+            <div class="select-vista">
+                <button class="select" (click)="mostrarCalendar()" [ngClass]="{'active-select': calendar}">Calendar</button>
+                <button class="select" (click)="mostrarKanban()" [ngClass]="{'active-select': kanban}">Kanban</button>
+            </div>
             <!-- <select name="vista" id="">
                 <option value="value1"selected >Mes</option>
                 <option value="value2">Semana</option>
@@ -29,8 +33,11 @@
 
     <!-- calendar -->
     <div class="calendar">
-        <full-calendar *ngIf="false" class="full-calendar" [options]="calendarOptions"></full-calendar>
-        <app-kanban *ngIf="true"></app-kanban>
+        <full-calendar *ngIf="calendar" class="full-calendar" [options]="calendarOptions"></full-calendar>
+        <app-kanban *ngIf="kanban"></app-kanban>
+        <div *ngIf="filtro">
+            <p>Tareas</p>
+        </div>
     </div>
 </div>
 

@@ -1,6 +1,6 @@
 <!-- <p>menu works!</p> -->
 <div class="menu">
-    <div class="logo">
+    <div class="logo" routerLink="/main/calendar">
         <img src="assets/logo.png" alt="Logo">
         <h1>TaskHub</h1>
     </div>
@@ -11,7 +11,7 @@
 
     <div class="dropdown-menu" *ngIf="isMenuOpen" >
         <ul>
-            <li routerLink="/editarperfil"><a >👤Editar Perfil</a></li>
+            <li routerLink="/main/editarperfil"><a >👤Editar Perfil</a></li>
             <li routerLink="/login">🚪Cerrar Sesión</li>
         </ul>
     </div>

@@ -23,4 +23,7 @@ export class MenuComponent {
       this.isMenuOpen = false;
     }
   }
+  // constructor(){
+  //   console.log("menu")
+  // }
 }

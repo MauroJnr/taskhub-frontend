@@ -28,4 +28,26 @@ export class CalendarComponent {
     ]
   };
 
+  calendar:boolean = true;
+  kanban:boolean = false;
+  filtro:boolean = false
+
+  mostrarCalendar(){
+    this.calendar = true;
+    this.kanban = false;
+    this.filtro = false;
+  }
+
+  mostrarKanban(){
+    this.calendar = false;
+    this.kanban = true;
+    this.filtro = false;
+  }
+
+  filtrarTareas(){
+    this.calendar = false;
+    this.kanban = false;
+    this.filtro = true;
+  }
+
 }

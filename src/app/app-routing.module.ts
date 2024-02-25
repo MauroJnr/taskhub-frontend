@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: '', redirectTo: "/main/calendar", pathMatch: 'full'},
     ]
   },
-  {path:'editarperfil',component:EditarperfilComponent},
+  // {path:'editarperfil',component:EditarperfilComponent},
 ];
 
 @NgModule({

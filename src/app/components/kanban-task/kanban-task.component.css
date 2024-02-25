@@ -61,13 +61,20 @@
     /* justify-content: center; */
     border-radius: 5px;
     gap: 0.2rem;
+    cursor: pointer;
 }
 
 .editar{
-    background-color: #3DC6CF;
+    background-color: #48D7E0;
+}
+.editar:hover{
+    background-color: #47c2ca;
 }
 .eliminar{
     background-color: #FF6B6B;
+}
+.eliminar:hover{
+    background-color: #dd4242;
 }
 
 .icon{
