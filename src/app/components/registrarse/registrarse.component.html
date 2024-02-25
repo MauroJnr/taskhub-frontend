@@ -12,36 +12,61 @@
       <h1>TaskHub</h1>
     </div>
     
-    <div class="register-form">
+    <form class="register-form">
       <h2 style="margin-bottom: 30px;">REGISTRARSE</h2>
       <div class="form-input">
         <label for="username">Nombre de usuario:</label>
-        <input type="text" id="username" name="username" required>
+        <input [(ngModel)]="user.username" type="text" id="username" name="username" required>
+        <div class="error" *ngIf="errorMessage.username.mostrar">
+          <p>❌ {{errorMessage.username.text}}</p>
+        </div>
       </div>
       <div class="form-input">
-        <label for="password">Correo:</label>
-        <input type="password" id="correo" name="password" required>
+        <label for="email">Correo:</label>
+        <input [(ngModel)]="user.email" type="email" id="correo" name="email" required>
+        <div class="error" *ngIf="errorMessage.email.mostrar">
+          <p>❌ {{errorMessage.email.text}}</p>
+        </div>
       </div>
       <div class="form-input">
-        <label for="password">Nombres:</label>
-        <input type="password" id="nombres" name="password" required>
+        <label for="name">Nombres:</label>
+        <input [(ngModel)]="user.name" type="text" id="nombres" name="name" required>
+        <div class="error" *ngIf="errorMessage.name.mostrar">
+          <p>❌ {{errorMessage.name.text}}</p>
+        </div>
       </div>
       <div class="form-input">
-        <label for="password">Apellidos:</label>
-        <input type="password" id="apellidos" name="password" required>
+        <label for="lastname">Apellidos:</label>
+        <input [(ngModel)]="user.lastname" type="text" id="apellidos" name="lastname" required>
+        <div class="error" *ngIf="errorMessage.lastname.mostrar">
+          <p>❌ {{errorMessage.lastname.text}}</p>
+        </div>
       </div>
       <div class="form-input">
         <label for="username">Contraseña:</label>
-        <input type="text" id="password" name="username" required>
+        <div class="input-pass">
+          <input [(ngModel)]="user.password" type="password" id="password" name="password" required>
+          <img src="assets/mostrasPass.svg" alt="noMostrar" *ngIf="!mostrar" (click)="mostrarPass()">
+          <img src="assets/ocultarPass.svg" alt="mostrar" *ngIf="mostrar" (click)="noMostrarPass()">
+        </div>
       </div>
       <div class="form-input">
         <label for="password">Confirmar Contraseña:</label>
-        <input type="password" id="confirm" name="password" required>
+        <div class="input-pass">
+          <input [(ngModel)]="user.confirmPassword" type="password" id="confirm" name="confirmPassword" required>
+          <img src="assets/mostrasPass.svg" alt="noMostrar" *ngIf="!mostrarConfirm" (click)="mostrarPassConfirm()">
+          <img src="assets/ocultarPass.svg" alt="mostrar" *ngIf="mostrarConfirm" (click)="noMostrarPassConfirm()">
+        </div>
+        <div class="error" *ngIf="errorMessage.password.mostrar">
+          <p>❌ {{errorMessage.password.text}}</p>
+        </div>
       </div>
-      <button class="form-submit">REGISTRAR</button>
+      <button class="form-submit" (click)="registrarUsuario()">
+        REGISTRAR
+      </button>
       <div class="form-footer">
         <p>¿Ya tienes una cuenta?<a href="#" routerLink="/login"> Inicia Sesión</a></p>
       </div>
-    </div>
+    </form>
   </div>
 </div>

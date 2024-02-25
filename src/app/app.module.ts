@@ -23,7 +23,7 @@ import { FiltroFechaComponent } from './components/filtro-fecha/filtro-fecha.com
 import { FiltroFechaTaskComponent } from './components/filtro-fecha-task/filtro-fecha-task.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +48,8 @@ import {MatTableModule} from '@angular/material/table';
     FullCalendarModule,
     DragDropModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule
   ],
   providers: [FloatingSuccessService,FloatingDeleteService],
   bootstrap: [AppComponent]

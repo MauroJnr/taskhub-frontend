@@ -19,15 +19,25 @@
 
       <div class="form-input">
         <label for="username">Correo:</label>
-        <input type="text" id="username" name="username" required>
+        <input [(ngModel)]="user.email" type="email" id="username" name="username" required>
+        <div class="error" *ngIf="errorMessage.email.mostrar">
+          <p>❌ {{errorMessage.email.text}}</p>
+        </div>
       </div>
 
       <div class="form-input">
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
+        <div class="input-pass">
+          <input [(ngModel)]="user.password" type="password" id="password" name="password" required>
+          <img src="assets/mostrasPass.svg" alt="noMostrar" *ngIf="!mostrar" (click)="mostrarPass()">
+          <img src="assets/ocultarPass.svg" alt="mostrar" *ngIf="mostrar" (click)="noMostrarPass()">
+        </div>
+        <div class="error" *ngIf="errorMessage.password.mostrar">
+          <p>❌ {{errorMessage.password.text}}</p>
+        </div>
       </div>
 
-      <button class="form-submit" (click)="redirectToMain()" >INGRESAR</button>
+      <button class="form-submit" (click)="loginUsuario()" >INGRESAR</button>
 
       <div class="form-footer">
         <!-- <a href="#">Olvidé mi contraseña</a><br> -->
