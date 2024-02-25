@@ -1,11 +1,18 @@
-.floating-delete {
-    width: 25rem;
-    height: 18rem; 
+.modal-container{
+    width: 100vw;
+    height: 100vh;
     position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(196, 196, 196, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-delete {
+    width: 100%;
     text-align: center;
-    top: 45%;
-    right: 24%;
-    transform: translate(-50%, -50%);
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -13,15 +20,19 @@
 }
 
 .floating-delete img{
-    margin-top: 0.9rem;
-    margin-bottom: 1rem;
     width: 5.3rem;
 }
-  
+
+.text-content{
+    margin: 1rem;
+}
+
+.btn-close{
+    text-align: right;
+    padding-right: 1rem;
+}
 .close {
-    position: absolute;
-    top: 5px;
-    right: 5px;
+    font-size: 1.5rem;
     font-weight: bold;
     background: none;
     border: none;
@@ -29,21 +40,29 @@
 }
 
 .btdelete{
-    position: absolute;
-    top: 66%;
-    right: 30%;
-    margin-top: 0;
     padding: 0.6rem 3rem;
     font-size: 1rem;
     border-radius: 5px;
     color: white;
     cursor: pointer;
     border: none;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     background-color: #FF5959;
-    margin-right: 0; 
 }
 
 .btdelete:hover{
     background-color: #b53636;
+}
+
+
+@media (min-width: 600px ) {
+    .floating-delete{
+        width: 62%;
+    }
+}
+
+@media (min-width: 1000px ) {
+    .floating-delete{
+        width: 28rem;
+    }
 }

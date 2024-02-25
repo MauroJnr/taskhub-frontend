@@ -1,7 +1,11 @@
-<div class="floating-success" *ngIf="isOpen">
-    <img src="assets\success.png" alt="succes">
-    <div>
-        <span>Cambios registrados<br>exitosamente</span>
+<div class="modal-container" *ngIf="isOpen">
+    <div class="floating-success" >
+        <div class="btn-close">
+            <button (click)="close()">X</button>
+        </div>
+        <img src="assets\success.webp" alt="succes">
+        <div class="text">
+            <p>Cambios registrados exitosamente</p>
+        </div>
     </div>
-    <button (click)="close()">X</button>
-  </div>
+</div>

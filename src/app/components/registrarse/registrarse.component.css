@@ -85,7 +85,14 @@ h2 {
   text-decoration: none;
 }
 
-@media (max-width: 1000px ) { /* de 900 en adelante */
+@media (max-width: 500px ) { /* de 1000 en adelante */
+  .register-form {
+    padding: 2rem;
+  }
+}
+
+
+@media (max-width: 1000px ) { /* de 1000 en adelante */
   .register-container {
     height: auto;
     flex-direction: column-reverse;

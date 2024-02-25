@@ -1,9 +1,15 @@
-<div class="floating-delete" *ngIf="isOpen">
-    <img src="assets\delete.png" alt="delete">
-    <div>   
-        <span>Eliminar Tarea</span><br>
-        <span>¿Está seguro que desea eliminar la tarea?</span>
+<div class="modal-container" *ngIf="isOpen">
+    <div class="floating-delete" >
+        <div class="btn-close">
+            <button class="close" (click)="close()">X</button>
+        </div>
+        <img src="assets/delete.webp" alt="delete">
+        <div class="text-content">   
+            <p>Eliminar Tarea</p>
+            <br>
+            <p>¿Está seguro que desea eliminar la tarea?</p>
+        </div>
+        
+        <button class="btdelete" (click)="close()">Eliminar</button>
     </div>
-    <button class="close" (click)="close()">X</button>
-    <button class="btdelete" (click)="close()">Eliminar</button>
 </div>

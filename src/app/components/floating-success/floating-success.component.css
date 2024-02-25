@@ -1,11 +1,24 @@
-.floating-success {
-    width: 18rem;
-    height: 12rem; 
+.modal-container{
+    width: 100vw;
+    height: 100vh;
     position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(196, 196, 196, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-success {
+    width: 100%;
+    /* width: 18rem;
+    height: 12rem;  */
+    /* position: fixed; */
     text-align: center;
-    top: 45%;
-    right: 31%;
-    transform: translate(-50%, -50%);
+    /* top: 45%;
+    right: 31%; */
+    /* transform: translate(-50%, -50%); */
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -13,16 +26,37 @@
 }
 
 .floating-success img{
-    margin-top: 0.9rem;
     width: 5.3rem;
 }
-  
+
+.btn-close{
+    text-align: right;
+    padding-right: 1rem;
+}
+
 .floating-success button {
-    position: absolute;
+    /* position: absolute;
     top: 5px;
-    right: 5px;
+    right: 5px; */
+    font-size: 1.5rem;
     font-weight: bold;
     background: none;
     border: none;
     cursor: pointer;
+}
+.text{
+    margin-bottom: 1rem;
+}
+
+
+@media (min-width: 500px ) {
+    .floating-success{
+        width: 55%;
+    }
+}
+
+@media (min-width: 1000px ) {
+    .floating-success{
+        width: 22rem;
+    }
 }
