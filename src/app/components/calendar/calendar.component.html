@@ -23,11 +23,6 @@
                 <button class="select" (click)="mostrarCalendar()" [ngClass]="{'active-select': calendar}">Calendar</button>
                 <button class="select" (click)="mostrarKanban()" [ngClass]="{'active-select': kanban}">Kanban</button>
             </div>
-            <!-- <select name="vista" id="">
-                <option value="value1"selected >Mes</option>
-                <option value="value2">Semana</option>
-                <option value="value3">Dia</option>
-            </select> -->
         </div>
     </div>
 
@@ -35,9 +30,7 @@
     <div class="calendar">
         <full-calendar *ngIf="calendar" class="full-calendar" [options]="calendarOptions"></full-calendar>
         <app-kanban *ngIf="kanban"></app-kanban>
-        <div *ngIf="filtro">
-            <p>Tareas</p>
-        </div>
+        <app-filtro-fecha *ngIf="filtro"></app-filtro-fecha>
     </div>
 </div>
 

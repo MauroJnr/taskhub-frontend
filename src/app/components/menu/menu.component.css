@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     /* padding: 0 3rem; */
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -63,4 +63,9 @@
 .logo h1{
     font-size: 1.5rem;
     color: #7C3AED;
+}
+@media (min-width: 700px ) { /* de 1000 en adelante */
+    .menu{
+        width: 85%;
+    }
 }

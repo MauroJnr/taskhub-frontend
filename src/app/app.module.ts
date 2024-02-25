@@ -18,6 +18,11 @@ import { FloatingSuccessComponent } from './components/floating-success/floating
 import { FloatingSuccessService } from './components/floating-success/floating-success.service';
 import { FloatingDeleteComponent } from './components/floating-delete/floating-delete.component';
 import { FloatingDeleteService } from './components/floating-delete/floating-delete.service';
+import { FiltroFechaPipe } from './pipes/filtro-fecha.pipe';
+import { FiltroFechaComponent } from './components/filtro-fecha/filtro-fecha.component';
+import { FiltroFechaTaskComponent } from './components/filtro-fecha-task/filtro-fecha-task.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -33,12 +38,17 @@ import { FloatingDeleteService } from './components/floating-delete/floating-del
     KanbanTaskComponent,
     FloatingSuccessComponent,
     FloatingDeleteComponent,
+    FiltroFechaPipe,
+    FiltroFechaComponent,
+    FiltroFechaTaskComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FullCalendarModule,
     DragDropModule,
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [FloatingSuccessService,FloatingDeleteService],
   bootstrap: [AppComponent]

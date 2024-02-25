@@ -87,8 +87,8 @@
     /* height: 42rem; */
     /* height: 100rem; */
     height: auto;
-
-    border: 1px solid black;
+    overflow: auto; /* principalmente el table es el que se sale del contenedor */
+    /* border: 1px solid black; */
 }
 .full-calendar{
     height: 100%;
@@ -106,13 +106,6 @@
     .calendar{
         margin-top: 0.8rem;
         height: 40rem;
-    }
-}
-
-@media (min-width: 1000px ) { /* de 1000 en adelante */
-    .contain{
-        width: 85%;
-        /* height: 49rem; */
     }
 }
 
