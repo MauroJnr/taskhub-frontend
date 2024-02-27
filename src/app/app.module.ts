@@ -24,6 +24,8 @@ import { FiltroFechaTaskComponent } from './components/filtro-fecha-task/filtro-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
+import { CrearTareaComponent } from './components/crear-tarea/crear-tarea.component';
+import { EditarTareaComponent } from './components/editar-tarea/editar-tarea.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,8 @@ import { FormsModule } from '@angular/forms';
     FiltroFechaPipe,
     FiltroFechaComponent,
     FiltroFechaTaskComponent,
+    EditarTareaComponent,
+    CrearTareaComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@
         </div>
 
         <div class="crear">
-            <button class="butn crear-tarea">+ Crear</button>
+            <button class="butn crear-tarea" [routerLink]="['/main/creartarea']">+ Crear</button>
             <div class="select-vista">
                 <button class="select" (click)="mostrarCalendar()" [ngClass]="{'active-select': calendar}">Calendar</button>
                 <button class="select" (click)="mostrarKanban()" [ngClass]="{'active-select': kanban}">Kanban</button>
