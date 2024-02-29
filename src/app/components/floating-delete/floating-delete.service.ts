@@ -8,13 +8,18 @@ export class FloatingDeleteService {
   private isOpenSubject = new Subject<boolean>();
   isOpen$ = this.isOpenSubject.asObservable();
 
-  tituloTarea = ""
+  idTarea = 0;
+  tituloTarea = "";
 
-  openSuccess() {
+  openSuccess(nombre:string, id: number) {
     this.isOpenSubject.next(true);
+    this.idTarea = id;
+    this.tituloTarea = nombre
   }
 
   closeSuccess() {
     this.isOpenSubject.next(false);
   }
+
+  
 }

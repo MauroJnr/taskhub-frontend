@@ -1,14 +1,15 @@
 <div class="task" 
+    id="task.id"
 >
     <div class="task-header">
-        <h1>{{task.titulo}}</h1>
+        <h1>{{task.nombre}}</h1>
         <p class="prioridad" [ngClass]="{'alta': (task.prioridad == 'Alta'), 'media': (task.prioridad == 'Media'), 'baja': (task.prioridad == 'Baja')}">{{task.prioridad}}</p>
     </div>
 
     <div class="fecha">
         <!-- 22 Feb 2024 -->
         <img class="icon" src="assets/fecha.svg" alt="">
-        <p>Vence: {{task.fecha}}</p>
+        <p>Vence: {{task.fechaFin}}</p>
         <img class="icon" src="assets/description.svg" alt="">
     </div>
 

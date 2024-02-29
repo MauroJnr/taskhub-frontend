@@ -38,8 +38,8 @@ export class FiltroFechaComponent {
     
   }
 
-  get allTasks(){
-    return [...this.tasksService.allTasks];
-  }
+  // get allTasks(){
+  //   return [...this.tasksService.allTasks];
+  // }
 
 }

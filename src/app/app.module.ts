@@ -24,6 +24,8 @@ import { FiltroFechaTaskComponent } from './components/filtro-fecha-task/filtro-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,8 @@ import { FormsModule } from '@angular/forms';
     DragDropModule,
     BrowserAnimationsModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [FloatingSuccessService,FloatingDeleteService],
   bootstrap: [AppComponent]

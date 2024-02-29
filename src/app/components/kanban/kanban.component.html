@@ -1,9 +1,13 @@
 <!-- <p>kanban works!</p> -->
 
-<div class="kanban-board" cdkDropListGroup cdkDropList>
+<div class="kanban-board" 
+    cdkDropListGroup 
+    cdkDropList
+>
     <!-- a cada app-kanban-list le pasar la lista tareas [heroNames]="heroNames" -->
+    <!-- allTasks -->
     <app-kanban-list 
-        *ngFor="let list of allTasks;"
+        *ngFor="let list of tasks;"
         class="kanban-list"
         cdkDropList
         cdkDragPreviewContainer="parent"

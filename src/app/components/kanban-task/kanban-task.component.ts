@@ -11,9 +11,9 @@ export class KanbanTaskComponent {
 
   @Input()
   public task = {
-    id: 1,
-    titulo: "Completar informe mensual",
-    fecha: "2024-02-25",
+    idTarea: 1,
+    nombre: "Completar informe mensual",
+    fechaFin: "2024-02-25",
     descripcion: "El informe mensual debe incluir análisis de ventas y proyecciones para el próximo mes.",
     prioridad: "Alta",
     estado: "Pendiente"
@@ -28,10 +28,11 @@ export class KanbanTaskComponent {
 
   Delete() {
 
-    this.floatingDeleteService.tituloTarea = this.task.titulo;
-
+    // this.floatingDeleteService.tituloTarea = this.task.nombre;
+    // this.floatingDeleteService.idTarea = this.task.id;
+    // console.log(this.task.idTarea)
     // Aquí puedes guardar los cambios en el perfil del usuario
-    this.floatingDeleteService.openSuccess();
+    this.floatingDeleteService.openSuccess(this.task.nombre, this.task.idTarea);
 
     // Suscribe al observable que indica el estado de la ventana flotante
     this.floatingDeleteService.isOpen$.subscribe(isOpen => {
