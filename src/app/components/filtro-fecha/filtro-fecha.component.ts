@@ -32,12 +32,21 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./filtro-fecha.component.css']
 })
 export class FiltroFechaComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+
   constructor(private tasksService: TasksService){ // colocar el servicio es private es buena práctica
     
   }
 
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource = ELEMENT_DATA;
+  
+
+  ngOnInit(){
+    this.tasksService.taskFiltroObservable.subscribe(tasks => {
+      console.log(tasks)
+    })
+
+  }
   // get allTasks(){
   //   return [...this.tasksService.allTasks];
   // }

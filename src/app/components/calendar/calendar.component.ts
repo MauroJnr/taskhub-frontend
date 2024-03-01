@@ -4,9 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import esLocale from '@fullcalendar/core/locales/es'
-import { flexibleCompare } from '@fullcalendar/core/internal';
 import { TasksService } from 'app/services/app.service';
-import { ChangeDetectorRef } from '@angular/core';
 import Task from 'app/interfaces/task';
 @Component({
   selector: 'app-calendar',
@@ -19,12 +17,12 @@ export class CalendarComponent {
     this.getData();
     // this.cdr.detectChanges();
     // this.tasksService.getData();
-    console.log(this.dataCalendar)
+    // console.log(this.dataCalendar)
   }
 
   ngOnInit(){
     this.tasksService.taskObservable.subscribe(tasks => {
-      console.log(tasks);
+      // console.log(tasks);
       this.dataCalendar = tasks;
       let pendiente: Task[] = tasks.filter(task => task.estado == "Pendiente")
 
@@ -57,20 +55,13 @@ export class CalendarComponent {
       title: "Pendiente",
       tasks:[]
     }
-
   ];
-
 
   dataCalendar = this.tasksService.tasks;
   
   events = this.dataCalendar.map((e:any)=> {
     return { title: e.nombre, start: new Date(e.fechaFin), id: e.idTarea }
   });
-  // this.tasksService.tasks.map((e:any)=> {
-  //   return { title: e.nombre, start: new Date(e.fechaFin), id: e.idTarea }
-  // })
-
-  
 
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -87,26 +78,23 @@ export class CalendarComponent {
     events: this.events
   };
   
+  fechaInicio:string = "";
+  fechaFin:string = "";
 
 
   async getData(){
     let datos = await this.tasksService.getData();
     this.dataCalendar = datos[0];
-    console.log(this.tasksService.loading)
+    // console.log(this.tasksService.loading)
     let eventos = []
     eventos = datos[0].map((e:any)=> {
       return { title: e.nombre, start: new Date(e.fechaFin), id: e.idTarea }
     });
-    console.log(eventos)
+    // console.log(eventos)
     // this.events = eventos;
     this.calendarOptions.events = eventos;
     this.dataKanban = datos[1];
   }
-
-
-  
-
-  
 
   clickEvent (info:any) {
     // DOBLE CLICK AL ELEMENTO DEBE ABRIR EL EDITOR DE TAREAS
@@ -140,10 +128,23 @@ export class CalendarComponent {
     this.filtro = false;
   }
 
-  filtrarTareas(){
-    this.calendar = false;
-    this.kanban = false;
-    this.filtro = true;
+  async filtrarTareas(){
+
+    if (this.fechaInicio == '' || this.fechaFin == ''){
+      console.log("Debe seleccionar ambas fechas")
+    }else if(this.fechaInicio > this.fechaFin){
+      console.log("La fecha de inicio es mayor a la fecha de fin")
+    }else if(this.fechaInicio == this.fechaFin){
+      console.log("La fecha de inicio y la fecha de fin son las mismas")
+    }
+    else{
+      this.calendar = false;
+      this.kanban = false;
+      this.filtro = true;
+
+      await this.tasksService.filtrarTareas(1,this.fechaInicio,this.fechaFin);
+    }
+
   }
 
 }

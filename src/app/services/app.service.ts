@@ -10,19 +10,24 @@ import Task from 'app/interfaces/task';
 })
 export class TasksService {
     public tasks:Task[] = [];
+    public tasksFiltro:Task[] = [];
     // observable
     private _tasks:BehaviorSubject<Task[]>;
+    private _tasksFiltro:BehaviorSubject<Task[]>;
 
     constructor(){
         this._tasks = new BehaviorSubject<Task[]>([]);
-        // this.getData();
-        // this.getDataTasks();
+        this._tasksFiltro = new BehaviorSubject<Task[]>([]);
     }
 
     get taskObservable(){ // retornamos el subject como un observable para que los demás puedan suscribirse
         return this._tasks.asObservable();
     }
     
+    get taskFiltroObservable(){ // retornamos el subject como un observable para que los demás puedan suscribirse
+        return this._tasksFiltro.asObservable();
+    }
+
     public loading: boolean = true;
     public datos: any = [
         {
@@ -41,22 +46,10 @@ export class TasksService {
 
 
     async getData(){
-        let data = await fetch("http://localhost:8080/taskhub/v1/tareas/filtrar", {
-            method: 'POST',
-            body: JSON.stringify({
-                usuarioId: 1,
-                fechaInicio: "2024-02-19T20:36:11.604+00:00",
-                fechaFin: "2025-02-26T20:36:11.604+00:00"
-            }),
-            headers: { // enviamos la data en formato JSON
-                'Content-type': 'application/json; charset=UTF-8',
-            }
-        })
+        let data = await fetch("http://localhost:8080/taskhub/v1/tareas/1")
         .then(response => response.json())
         .catch(err => err)
         this.tasks = data.tareas;
-
-        // console.log(this.tasks)
 
         for (const task of this.tasks) {
             task.fechaFin = new Date(task.fechaFin).toDateString();
@@ -90,6 +83,38 @@ export class TasksService {
         return [this.tasks, this.datos]
     }
 
+    async getDeleteTarea(id:number){
+        await fetch(`http://localhost:8080/taskhub/v1/tareas/${id}`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .catch(err => err)
+
+        this.tasks = this.tasks.filter(task => task.idTarea !== id);
+        this._tasks.next(this.tasks); // emitimos el evento con el cambio en la lista de tareas
+
+        // return "Tarea eliminada"
+    }
+
+    async filtrarTareas(id:number, fechaInicio:string, fechaFin:string){
+        let data = await fetch(`http://localhost:8080/taskhub/v1/tareas/filtrar/${id}`, {
+            method: 'POST',
+            body: JSON.stringify({
+                fechaInicio: fechaInicio, // "2024-02-19T20:36:11.604+00:00",
+                fechaFin: fechaFin, //"2025-02-26T20:36:11.604+00:00"
+            }),
+            headers: { // enviamos la data en formato JSON
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        })
+        .then(response => response.json())
+        .catch(err => err)
+
+        this.tasksFiltro = data.tareas;
+        this._tasksFiltro.next(this.tasksFiltro);
+
+    }
+
     moveTask(dropEvent: CdkDragDrop<any[]>): void{
         // previousContainer: anterior contenedor del elemento
         // container: Actual contenedor del elemento
@@ -106,44 +131,5 @@ export class TasksService {
             : transferArrayItem(previousContainer.data, container.data, previousIndex, currentIndex) // si es otro contenedor, se cambia a ese contenedor
     }
 
-    async getDeleteTarea(id:number){
-        await fetch(`http://localhost:8080/taskhub/v1/tareas/${id}`, {
-            method: 'DELETE'
-        })
-        .then(response => response.json())
-        .catch(err => err)
-        
-
-
-        // await this.getData();
-
-        this.tasks = this.tasks.filter(task => task.idTarea !== id);
-        this._tasks.next(this.tasks); // emitimos el evento con el cambio en la lista de tareas
-
-        // console.log(id)
-        // console.log(this.tasks)
-        // // this.tasks.filter(task => task.id !== id)
-
-        // this.tasksPendiente = this.tasks.filter(task => task.estado == "Pendiente");
-        // this.tasksProgreso = this.tasks.filter(task => task.estado == "En progreso"); // En progreso
-        // this.tasksTerminado = this.tasks.filter(task => task.estado == "Terminado"); // Terminado
-
-        // this.datos = [
-        //     {
-        //         title: "Pendiente",
-        //         tasks: this.tasksPendiente
-        //     },
-        //     {
-        //         title: "En progreso",
-        //         tasks: this.tasksProgreso,
-        //     },
-        //     {
-        //         title: "Terminado",
-        //         tasks: this.tasksTerminado
-        //     }
-        // ]
-        // console.log(this.datos)
-
-        return "Tarea eliminada"
-    }
+    
 }

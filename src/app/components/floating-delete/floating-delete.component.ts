@@ -27,8 +27,7 @@ export class FloatingDeleteComponent {
   // idTarea: number = this.floatingDeleteService.idTarea;
 
   async deleteTask(){
-    let a = await this.tasksService.getDeleteTarea(this.floatingDeleteService.idTarea)
-    console.log(a)
+    await this.tasksService.getDeleteTarea(this.floatingDeleteService.idTarea)
 
     this.close();
   }
