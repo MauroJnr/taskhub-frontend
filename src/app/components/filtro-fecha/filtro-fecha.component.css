@@ -6,3 +6,48 @@ table {
 .mat-elevation-z8{
     box-shadow: none;
 }
+
+th{
+    font-size: 1.1rem;
+}
+td{
+    font-size: 1.1rem;
+}
+
+.dateTimeTable{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+}
+
+.day{
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 5px;
+    background-color: #1DB5BE;
+    padding: 0.8rem;
+    margin-right: 0.8rem;
+}
+
+.estadoTaskTable{
+    padding: 0.5rem;
+    border-radius: 5px;
+    /* display: flex; */
+    width: 5rem;
+    text-align: center;
+}
+
+.alta{
+    color: #FF4949;
+    background-color: #FFCDDF;
+}
+.baja{
+    color: #5FA336;
+    background-color: #C4FFBA;
+}
+.media{
+    color: #CDA30F;
+    background-color: #F6ED96;
+}
+

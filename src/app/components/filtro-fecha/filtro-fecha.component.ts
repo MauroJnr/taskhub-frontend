@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Task from 'app/interfaces/task';
 import { TasksService } from 'app/services/app.service';
 
 export interface PeriodicElement {
@@ -39,11 +40,12 @@ export class FiltroFechaComponent {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
-  
+  tasks:Task[] = []
 
   ngOnInit(){
     this.tasksService.taskFiltroObservable.subscribe(tasks => {
-      console.log(tasks)
+      // console.log(tasks)
+      this.tasks = tasks;
     })
 
   }

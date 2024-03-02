@@ -1,35 +1,41 @@
 
 <div class="container">
   <div class="task-form">
-    <h2>Editar Tarea</h2>
+    <h2>Editar tarea</h2>
     <form action="#" method="post">
       <div class="form-group">
         <label for="title">Título</label>
-        <input type="text" id="title" name="title">
+        <input [(ngModel)]="task.titulo" type="text" id="title" name="title">
       </div>
       <div class="form-group">
         <label for="priority">Prioridad</label>
-        <select id="priority" name="priority">
-          <option>Seleccionar</option>
+        <select [(ngModel)]="task.prioridad" id="priority" name="priority">
+          <option value="0" selected>Seleccionar</option>
+          <option value="Bajo">Bajo</option>
+          <option value="Medio">Medio</option>
+          <option value="Alto">Alto</option>
         </select>
       </div>
       <div class="form-group">
         <label for="status">Estado</label>
-        <select id="status" name="status">
-          <option>Seleccionar</option>
+        <select [(ngModel)]="task.estado" id="status" name="status">
+          <option value="0" selected>Seleccionar</option>
+          <option value="1">Pendiente</option>
+          <option value="2">En proceso</option>
+          <option value="3">Terminado</option>
         </select>
       </div>
       <div class="form-group">
         <label for="due-date">Fecha de vencimiento</label>
-        <input type="datetime-local" id="due-date" name="due-date" >
+        <input [(ngModel)]="task.fechaVencimiento" type="datetime-local" id="due-date" name="due-date" >
       </div>
       <div class="form-group">
         <label for="description">Descripción</label>
-        <textarea id="description" name="description"></textarea>
+        <textarea [(ngModel)]="task.descripcion" id="description" name="description"></textarea>
       </div>
       <div class="form-actions">
         <button type="button" class="cancel-button">Cancelar</button>
-        <button type="submit" class="submit-button">Crear Tarea</button>
+        <button type="submit" class="submit-button" (click)="editarTarea()">Crear Tarea</button>
       </div>
     </form>
   </div>

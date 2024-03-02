@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./editar-tarea.component.css']
 })
 export class EditarTareaComponent {
+  public task = {
+    titulo: "",
+    prioridad: "",
+    estado: "",
+    fechaVencimiento: "",
+    descripcion: "",
+  }
 
+  editarTarea(){
+    console.log(this.task)
+  }
 }

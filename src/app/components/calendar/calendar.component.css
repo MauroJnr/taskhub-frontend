@@ -94,6 +94,17 @@
     height: 100%;
 }
 
+.calendar::-webkit-scrollbar{
+    width: 9px;
+    height: 9px;
+    background-color: #A0A0A0;
+    border-radius: 5px;
+}
+.calendar::-webkit-scrollbar-thumb{
+    background-color: #7b7a7a;
+    border-radius: 5px;
+}
+
 @media (min-width: 700px ) {
     .form{
         flex-direction: row;

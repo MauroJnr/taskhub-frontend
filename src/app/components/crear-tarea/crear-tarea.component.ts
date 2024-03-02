@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class CrearTareaComponent {
 
+  public task = {
+    titulo: "",
+    prioridad: "",
+    estado: "",
+    fechaVencimiento: "",
+    descripcion: "",
+  }
+
+  crearTarea(){
+    console.log(this.task)
+  }
+
 }
