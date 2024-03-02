@@ -24,13 +24,10 @@ import { FiltroFechaTaskComponent } from './components/filtro-fecha-task/filtro-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
-<<<<<<< HEAD
-import { HttpClientModule } from '@angular/common/http';
-
-=======
 import { CrearTareaComponent } from './components/crear-tarea/crear-tarea.component';
 import { EditarTareaComponent } from './components/editar-tarea/editar-tarea.component';
->>>>>>> 1451a02c556a4aef6c14ba3c68a4cb5f6ff014a0
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
