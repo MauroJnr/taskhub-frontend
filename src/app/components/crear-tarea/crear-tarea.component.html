@@ -1,0 +1,36 @@
+
+<div class="container">
+  <div class="task-form">
+    <h2>Crear Nueva Tarea</h2>
+    <form action="#" method="post">
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input type="text" id="title" name="title">
+      </div>
+      <div class="form-group">
+        <label for="priority">Prioridad</label>
+        <select id="priority" name="priority">
+          <option>Seleccionar</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="status">Estado</label>
+        <select id="status" name="status">
+          <option>Seleccionar</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="due-date">Fecha de vencimiento</label>
+        <input type="datetime-local" id="due-date" name="due-date" >
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="cancel-button">Cancelar</button>
+        <button type="submit" class="submit-button">Crear Tarea</button>
+      </div>
+    </form>
+  </div>
+</div>

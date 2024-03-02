@@ -19,12 +19,15 @@ export class KanbanTaskComponent {
     estado: "Pendiente"
   };
 
+  constructor( private router: Router, private floatingDeleteService:FloatingDeleteService) {  }
+
   editarTask(){
     // console.log("Editar")
-    console.log(this.task)
+    this.router.navigate(['/main/editartarea']);
+    // console.log(this.task)
   }
 
-  constructor( private router: Router, private floatingDeleteService:FloatingDeleteService) {  }
+
 
   Delete() {
 

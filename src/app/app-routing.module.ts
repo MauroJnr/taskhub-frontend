@@ -5,6 +5,8 @@ import { RegistrarseComponent } from "./components/registrarse/registrarse.compo
 import { MainCalendarComponent } from './pages/main-calendar/main-calendar.component';
 import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { EditarTareaComponent } from "./components/editar-tarea/editar-tarea.component";
+import { CrearTareaComponent } from "./components/crear-tarea/crear-tarea.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'main', component: MainCalendarComponent, children:[
       { path: 'editarperfil', title:"Editar perfil", component: EditarperfilComponent },
       { path: 'calendar', title:"Calendar", component: CalendarComponent },
+      { path: 'editartarea', title:"Editar tarea", component: EditarTareaComponent },
+      { path: 'creartarea', title:"Crear tarea", component: CrearTareaComponent },
       { path: '', redirectTo: "/main/calendar", pathMatch: 'full'},
     ]
   },

@@ -94,7 +94,9 @@ h2 {
 
 .buttons button{
     margin-top: 0;
-    padding: 0.6rem 3rem;
+    width: 7rem;
+    height: 2rem;
+    /*padding: 0.6rem 3rem;*/
     font-size: 1rem;
     border-radius: 5px;
     color: white;
@@ -132,5 +134,120 @@ h2 {
     }
     .logo img{
       width: 100%;
+    }
+    
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+    .EPerfil-container {
+        margin-top: 10rem;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .ICON {
+        justify-self: center;
+        width: 10%;
+        justify-items: center;
+        margin-left: 40%;
+        margin-bottom: 10%;
+    }
+    
+    .ICON img{
+
+        width: 10rem;
+        margin-left: 40%;
+    }
+
+    .EPerfil{
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        margin-left: 0;
+        margin-bottom: 10%;
+    }
+
+    .EPerfil-form {
+        justify-self: center;
+        width: 100%;
+        height: auto;
+        padding: 2rem;
+    }
+
+    .form-input{
+        font-size: larger;
+    }
+
+    .form-input input{
+        width: 3 nbh  00 px;
+    }
+    .buttons {
+        margin-top: 10rem;
+        flex-direction:column-reverse; 
+        align-items: center;
+        padding-right: 0rem; 
+    }
+
+    .buttons button {
+        margin: 0.8rem 0; /* añadir espacio entre los botones */
+        width: 60%;
+        height: 3rem;
+        font-size: large;
+    }
+}
+
+@media (max-width: 900px) {
+    .EPerfil-container {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .ICON {
+        justify-self: center;
+        justify-items: center;
+        margin-bottom: 10%;
+    }
+    
+    .ICON img{
+        margin-left: 9%;
+    }
+
+    .EPerfil{
+        display: flex;
+        justify-content: center;
+        margin-left: 0;
+        margin-bottom: 10%;
+    }
+
+    .EPerfil-form {
+        font-size: 0.8rem;
+        justify-self: center;
+        width: 90%;
+        height: auto;
+        padding: 2rem;
+    }
+
+    .form-input{
+        align-items: right;
+        justify-content: space-between;
+        margin-inline-end: -1%;     
+    }
+
+    .form-input input {
+        width: 150px;
+        font-size: 0.8rem;
+    }
+
+    .buttons {
+        flex-direction:column-reverse; 
+        align-items: center;
+        padding-right: 0rem; 
+    }
+
+    .buttons button {
+        margin: 0.8rem 0; 
+        width: 60%;
+        height: 3rem;
+        font-size: large;
     }
 }
