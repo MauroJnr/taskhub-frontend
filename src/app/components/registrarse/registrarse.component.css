@@ -110,12 +110,16 @@ h2 {
   color: #ff1d1d;
 }
 
+.logo img {
+  width: 100%;
+}
+
 @media (max-width: 500px ) { /* de 1000 en adelante */
   .register-form {
     padding: 2rem;
   }
   .logo img {
-    width: 100%;
+    width: 90%;
   }
 }
 

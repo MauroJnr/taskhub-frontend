@@ -15,7 +15,9 @@
 
 .task-form{
   width: 100%;
-  background: #EBEBFF;
+  /* background: #EBEBFF; */
+  background-color: white;
+  border: 1px solid #7C3AED;
   padding: 1.5rem;
   border-radius: 10px;
 }
@@ -62,7 +64,7 @@ label span{
 .form-group select,
 .form-group textarea {
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #cdcdcd;
   border-radius: 4px;
 }
 
