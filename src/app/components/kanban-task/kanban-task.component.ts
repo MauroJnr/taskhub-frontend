@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FloatingDeleteService } from '../floating-delete/floating-delete.service';
-
+import { TasksService } from "../../services/app.service";
 @Component({
   selector: 'app-kanban-task',
   templateUrl: './kanban-task.component.html',
   styleUrls: ['./kanban-task.component.css']
 })
 export class KanbanTaskComponent {
+  constructor( private router: Router, private floatingDeleteService:FloatingDeleteService, private tasksService: TasksService) {  }
 
   @Input()
   public task = {
@@ -19,12 +20,11 @@ export class KanbanTaskComponent {
     estado: "Pendiente"
   };
 
-  constructor( private router: Router, private floatingDeleteService:FloatingDeleteService) {  }
-
   editarTask(){
     // console.log("Editar")
+    console.log(this.task)
+    this.tasksService.taskEdit = this.task;
     this.router.navigate(['/main/editartarea']);
-    // console.log(this.task)
   }
 
 

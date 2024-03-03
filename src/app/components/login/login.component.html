@@ -21,7 +21,7 @@
         <label for="username">Correo:</label>
         <input [(ngModel)]="user.email" type="email" id="username" name="username" required>
         <div class="error" *ngIf="errorMessage.email.mostrar">
-          <p>❌ {{errorMessage.email.text}}</p>
+          <p>{{errorMessage.email.text}}</p>
         </div>
       </div>
 
@@ -33,7 +33,7 @@
           <img src="assets/ocultarPass.svg" alt="mostrar" *ngIf="mostrar" (click)="noMostrarPass()">
         </div>
         <div class="error" *ngIf="errorMessage.password.mostrar">
-          <p>❌ {{errorMessage.password.text}}</p>
+          <p>{{errorMessage.password.text}}</p>
         </div>
       </div>
 

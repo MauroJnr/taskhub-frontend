@@ -2,41 +2,70 @@
     <img src="assets/logo.png" alt="Logo" />
     <h1>TaskHub</h1>
 </div> -->
-<div class="EPerfil-container">
+<div class="container">
 
-    <div class="ICON">
-        <img src="assets\icoP.png" alt="ICON" />
-    </div>
+    <div class="EPerfil-container">
+        <div class="ICON">
+            <img src="assets\icoP.png" alt="ICON" />
+        </div>
+    
+        <div class="EPerfil">
+            <div class="EPerfil-form">
+                <h2>Editar perfil</h2>
+                <div class="form-input">
+                    <label for="nombres">Nombre de usuario <span>*</span></label>
+                    <input [(ngModel)]="user.username" type="text" id="username" name="nombres" required>
+                    <div class="error" *ngIf="errorMessage.username.mostrar">
+                        <p>{{errorMessage.username.text}}</p>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <label for="nombres">Nombres <span>*</span></label>
+                    <input [(ngModel)]="user.name" type="text" id="nombres" name="nombres" required>
+                    <div class="error" *ngIf="errorMessage.name.mostrar">
+                        <p>{{errorMessage.name.text}}</p>
+                    </div>
+                </div>
+    
+                <div class="form-input">
+                    <label for="apellidos">Apellidos <span>*</span></label>
+                    <input [(ngModel)]="user.lastname" type="text" id="apellidos" name="apellidos" required>
+                    <div class="error" *ngIf="errorMessage.lastname.mostrar">
+                        <p>{{errorMessage.lastname.text}}</p>
+                    </div>
+                </div>
+    
+                <fieldset>
+                    <legend>Cambiar contraseña</legend>
+                    <div class="form-input">
+                        <label for="userPassword">Nueva Contraseña</label>
+                        <div class="input-pass">
+                            <input [(ngModel)]="user.newPassword" type="password" id="password" name="password" required>
+                            <img src="assets/mostrasPass.svg" alt="noMostrar" *ngIf="!mostrar" (click)="mostrarPass()">
+                            <img src="assets/ocultarPass.svg" alt="mostrar" *ngIf="mostrar" (click)="noMostrarPass()">
+                        </div>
+                    </div>
+        
+                    <div class="form-input">
+                        <label for="userPassword">Confirmar contraseña</label>
+                        <div class="input-pass">
+                            <input [(ngModel)]="user.confirmPassword" type="password" id="confirmPassword" name='confirmPassword' required>
+                            <img src="assets/mostrasPass.svg" alt="noMostrar" *ngIf="!mostrarConfirm" (click)="mostrarPassConfirm()">
+                            <img src="assets/ocultarPass.svg" alt="mostrar" *ngIf="mostrarConfirm" (click)="noMostrarPassConfirm()">
+                        </div>
+                    </div>
+                    <div class="error" *ngIf="errorMessage.newPassword.mostrar">
+                        <p>{{errorMessage.newPassword.text}}</p>
+                    </div>
+                </fieldset>
 
-    <div class="EPerfil">
-
-        <div class="EPerfil-form">
-            <h2>EDITAR PERFIL</h2>
-            <div class="form-input">
-                <label for="nombres">Nombres</label>
-                <input type="text" id="nombres" name="nombres" required>
+                <div class="buttons">
+                    <button class="form-cancel" (click)="Cancel()" >Cancelar</button>
+                    <button class="form-save" (click)="saveChangues()" >Guardar</button>
+                </div>
             </div>
-
-            <div class="form-input">
-                <label for="apellidos">Apellidos</label>
-                <input type="text" id="apellidos" name="apellidos" required>
-            </div>
-
-            <div class="form-input">
-                <label for="userPassword">Contraseña</label>
-                <input type="text" id="password" name="password" required>
-            </div>
-
-            <div class="form-input">
-                <label for="userPassword">Confirmar Contraseña</label>
-                <input type="text" id="password" name="password" required>
-            </div>
-
         </div>
     </div>
 </div>
-<div class="buttons">
-    <button class="form-cancel" (click)="Cancel()" >Cancelar</button>
-    <button class="form-save" (click)="saveChangues()" >Guardar</button>
-</div>
+
 <app-floating-success></app-floating-success>

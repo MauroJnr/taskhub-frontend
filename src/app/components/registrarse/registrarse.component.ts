@@ -62,7 +62,7 @@ export class RegistrarseComponent {
       this.errorMessage.username.mostrar = true
       this.errorMessage.count++;
     }else if( this.user.username.length < 3  ){
-      this.errorMessage.username.text = "El nombre de usuario debe ser mayor a 3 dígitos"
+      this.errorMessage.username.text = "El nombre de usuario debe ser mayor a 3 letras"
       this.errorMessage.username.mostrar = true
       this.errorMessage.count++;
     }else{
@@ -76,7 +76,7 @@ export class RegistrarseComponent {
       this.errorMessage.name.mostrar = true
       this.errorMessage.count++;
     }else if( this.user.name.length < 3  ){
-      this.errorMessage.name.text = "El nombre debe ser mayor a 3 dígitos"
+      this.errorMessage.name.text = "El nombre debe ser mayor a 3 letras"
       this.errorMessage.name.mostrar = true
       this.errorMessage.count++;
     }else{
@@ -89,8 +89,8 @@ export class RegistrarseComponent {
       this.errorMessage.lastname.text = "El apellido es obligatorio"
       this.errorMessage.lastname.mostrar = true
       this.errorMessage.count++;
-    }else if(this.user.name.length < 3){
-      this.errorMessage.lastname.text = "El apellido debe ser mayor a 3 dígitos"
+    }else if(this.user.lastname.length < 3){
+      this.errorMessage.lastname.text = "El apellido debe ser mayor a 3 letras"
       this.errorMessage.lastname.mostrar = true
       this.errorMessage.count++;
     }else{

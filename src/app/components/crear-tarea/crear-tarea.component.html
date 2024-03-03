@@ -2,40 +2,49 @@
 <div class="container">
   <div class="task-form">
     <h2>Crear nueva tarea</h2>
-    <form action="#" method="post">
+    <form action="#" method="post" (submit)='crearTarea($event)'>
       <div class="form-group">
         <label for="title">Título</label>
-        <input [(ngModel)]="task.titulo" type="text" id="title" name="title">
+        <input [(ngModel)]="task.nombre" type="text" id="title" name="title">
+        <div class="error" *ngIf="errorMessage.nombre.mostrar">
+          <p>{{errorMessage.nombre.text}}</p>
+        </div>
       </div>
       <div class="form-group">
         <label for="priority">Prioridad</label>
         <select [(ngModel)]="task.prioridad" id="priority" name="priority">
-          <option value="0" selected>Seleccionar</option>
-          <option value="Bajo">Bajo</option>
-          <option value="Medio">Medio</option>
-          <option value="Alto">Alto</option>
+          <option value="" selected>Seleccionar</option>
+          <option *ngFor="let opcion of prioridadOptions" [value]="opcion">{{ opcion }}</option>
         </select>
+        <div class="error" *ngIf="errorMessage.prioridad.mostrar">
+          <p>{{errorMessage.prioridad.text}}</p>
+        </div>
       </div>
       <div class="form-group">
         <label for="status">Estado</label>
         <select [(ngModel)]="task.estado" id="status" name="status">
-          <option value="0" selected>Seleccionar</option>
-          <option value="1">Pendiente</option>
-          <option value="2">En proceso</option>
-          <option value="3">Terminado</option>
+          <option value="" selected>Seleccionar</option>
+          <option *ngFor="let opcion of estadoOptions" [value]="opcion.texto">{{ opcion.texto }}</option>
         </select>
+        <div class="error" *ngIf="errorMessage.estado.mostrar">
+          <p>{{errorMessage.estado.text}}</p>
+        </div>
       </div>
       <div class="form-group">
         <label for="due-date">Fecha de vencimiento</label>
-        <input [(ngModel)]="task.fechaVencimiento" type="datetime-local" id="due-date" name="due-date" >
+        <input [(ngModel)]="task.fechaFin" type="datetime-local" id="due-date" name="due-date">
+        <div class="error" *ngIf="errorMessage.fechaFin.mostrar">
+          <p>{{errorMessage.fechaFin.text}}</p>
+        </div>
       </div>
       <div class="form-group">
         <label for="description">Descripción</label>
         <textarea [(ngModel)]="task.descripcion" id="description" name="description"></textarea>
       </div>
       <div class="form-actions">
-        <button type="button" class="cancel-button">Cancelar</button>
-        <button type="submit" class="submit-button" (click)="crearTarea()">Crear Tarea</button>
+        <button type="button" class="cancel-button" routerLink="/main/calendar">Cancelar</button>
+        <button type="submit" class="submit-button">Crear Tarea</button>
+        <!-- (click)="crearTarea()" -->
       </div>
     </form>
   </div>

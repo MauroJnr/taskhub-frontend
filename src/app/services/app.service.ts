@@ -11,6 +11,14 @@ import Task from 'app/interfaces/task';
 export class TasksService {
     public tasks:Task[] = [];
     public tasksFiltro:Task[] = [];
+    public taskEdit:Task={
+        idTarea: 0,
+        nombre: "",
+        prioridad: "",
+        estado: "",
+        fechaFin: "",
+        descripcion: "",
+    };
     // observable
     private _tasks:BehaviorSubject<Task[]>;
     private _tasksFiltro:BehaviorSubject<Task[]>;

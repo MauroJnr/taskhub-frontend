@@ -114,6 +114,9 @@ h2 {
   .register-form {
     padding: 2rem;
   }
+  .logo img {
+    width: 100%;
+  }
 }
 
 
