@@ -7,18 +7,21 @@ import { EditarperfilComponent } from './components/editarperfil/editarperfil.co
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { EditarTareaComponent } from "./components/editar-tarea/editar-tarea.component";
 import { CrearTareaComponent } from "./components/crear-tarea/crear-tarea.component";
+import { loginGuard } from './guards/login.guard';
+import { editTaskGuard } from './guards/editTask.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
   { path: 'registrarse', component: RegistrarseComponent },
   { path: 'main', component: MainCalendarComponent, children:[
       { path: 'editarperfil', title:"Editar perfil", component: EditarperfilComponent },
       { path: 'calendar', title:"Calendar", component: CalendarComponent },
-      { path: 'editartarea', title:"Editar tarea", component: EditarTareaComponent },
+      { path: 'editartarea', title:"Editar tarea", component: EditarTareaComponent, canActivate:[editTaskGuard] },
       { path: 'creartarea', title:"Crear tarea", component: CrearTareaComponent },
       { path: '', redirectTo: "/main/calendar", pathMatch: 'full'},
-    ]
+    ], 
+    canActivate:[loginGuard]
   },
   // {path:'editarperfil',component:EditarperfilComponent},
 ];

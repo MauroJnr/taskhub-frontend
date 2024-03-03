@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TasksService } from "../../services/app.service";
+import { UserService } from "../../services/app.user.service";
+
 @Component({
   selector: 'app-registrarse',
   templateUrl: './registrarse.component.html',
@@ -10,10 +13,12 @@ export class RegistrarseComponent {
   mostrar: boolean = false; // password
   mostrarConfirm: boolean = false; // Confirm password
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private tasksService: TasksService, private userService: UserService) {
+
+  }
 
   redirectToMain() {
-    this.router.navigate(['/main']);
+    this.router.navigate(['/login']);
   }
 
   errorMessage = {
@@ -48,7 +53,7 @@ export class RegistrarseComponent {
     password: "",
     confirmPassword: "",
   }
-  registrarUsuario():void {
+  async registrarUsuario() {
     console.log(this.user)
     console.log(this.errorMessage)
     
@@ -130,10 +135,18 @@ export class RegistrarseComponent {
     if(this.errorMessage.count == 0){
       console.log("Registrar usuario")
 
-
+      await this.userService.registerUser(
+        {
+        usuarioIngreso: this.user.username,
+        contraseña: this.user.password,
+        correo: this.user.email,
+        nombres: this.user.name,
+        apellidos: this.user.lastname
+      }
+      );
 
       // redireccionamos
-      this.redirectToMain();
+      // this.redirectToMain();
     }
   }
 

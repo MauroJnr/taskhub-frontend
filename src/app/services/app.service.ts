@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
 import Task from 'app/interfaces/task';
 // import {  }
 @Injectable({

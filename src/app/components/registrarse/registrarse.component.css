@@ -57,10 +57,11 @@ h2 {
 
 .form-input input {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   margin-top: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  font-size: 1rem;
 }
 .form-input input:focus{
   outline: none;

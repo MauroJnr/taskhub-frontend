@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { CrearTareaComponent } from './components/crear-tarea/crear-tarea.component';
 import { EditarTareaComponent } from './components/editar-tarea/editar-tarea.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/app.user.service'
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [FloatingSuccessService,FloatingDeleteService],
+  providers: [FloatingSuccessService,FloatingDeleteService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
