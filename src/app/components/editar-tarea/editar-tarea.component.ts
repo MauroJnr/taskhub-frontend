@@ -121,7 +121,7 @@ export class EditarTareaComponent {
 
       setTimeout(() => {
         // redireccionamos
-        // this.router.navigate(['/main/calendar']);
+        this.router.navigate(['/main/calendar']);
       }, 1500);
     }
   }

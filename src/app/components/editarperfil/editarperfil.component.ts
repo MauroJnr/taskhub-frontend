@@ -2,20 +2,27 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FloatingSuccessService } from '../floating-success/floating-success.service';
-
+import { UserService } from "../../services/app.user.service";
 @Component({
   selector: 'app-editarperfil',
   templateUrl: './editarperfil.component.html',
   styleUrls: ['./editarperfil.component.css']
 })
 export class EditarperfilComponent {
-  
+  constructor( private router: Router, private floatingSuccessService:FloatingSuccessService, private userService: UserService) {  
+    this.successMessage.mostrar=false;
+  }
+
   public user = {
     username: "",
     name: "",
     lastname: "",
     newPassword: "",
     confirmPassword: "",
+  }
+
+  redirectToMain() {
+    this.router.navigate(['/main/calendar']);
   }
 
   errorMessage = {
@@ -38,9 +45,14 @@ export class EditarperfilComponent {
     },
   }
 
-  constructor( private router: Router, private floatingSuccessService:FloatingSuccessService) {  }
+  successMessage = {
+    text: "",
+    mostrar: false,
+  }
 
-  saveChangues() {
+  
+
+  async saveChangues() {
     this.errorMessage.count = 0;
     // validación username
     if(this.user.username == "" ){
@@ -101,8 +113,30 @@ export class EditarperfilComponent {
     }
 
     // Aquí puedes guardar los cambios en el perfil del usuario
-    this.floatingSuccessService.openSuccess();
+    // this.floatingSuccessService.openSuccess();
 
+    // Validacion backend
+    if(this.errorMessage.count == 0){
+      console.log("Login usuario")
+
+      await this.userService.editUser(
+        {
+          usuarioIngreso: this.user.username,
+          contraseña: this.user.newPassword,
+          correo: "perez@gmail.com",
+          nombres: this.user.name,
+          apellidos: this.user.lastname
+        }
+      );
+
+      this.successMessage.text = "Usuario actualizado correctamente"
+      this.successMessage.mostrar = true;
+
+      setTimeout(() => {
+        this.redirectToMain();
+      }, 1500);
+
+    }
     // Suscribe al observable que indica el estado de la ventana flotante
     // this.floatingSuccessService.isOpen$.subscribe(isOpen => {
     //   if (!isOpen) {

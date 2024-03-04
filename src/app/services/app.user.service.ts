@@ -70,7 +70,7 @@ export class UserService {
     async editUser(usuario:any){
         let token = localStorage.getItem('token_taskhub')
         let data = await fetch(`http://localhost:8080/taskhub/v1/usuarios/1`,{
-            method: 'POST',
+            method: 'PUT',
             headers:{
                 'Content-Type':'application/json',
                 'Authotization':`Bearer ${token}`

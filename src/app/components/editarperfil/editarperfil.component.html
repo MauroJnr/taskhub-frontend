@@ -57,8 +57,11 @@
                     <div class="error" *ngIf="errorMessage.newPassword.mostrar">
                         <p>{{errorMessage.newPassword.text}}</p>
                     </div>
+                    
                 </fieldset>
-
+                <div class="success" *ngIf="successMessage.mostrar">
+                    <p>{{successMessage.text}}</p>
+                </div>
                 <div class="buttons">
                     <button class="form-cancel" (click)="Cancel()" >Cancelar</button>
                     <button class="form-save" (click)="saveChangues()" >Guardar</button>
