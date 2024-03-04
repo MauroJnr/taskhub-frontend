@@ -112,6 +112,12 @@ h2 {
   color: #ff1d1d;
 }
 
+.success{
+  /* margin-top: 0.5rem; */
+  color: rgb(42, 187, 42);
+  text-align: center;
+}
+
 @media (min-width: 900px ) { /* de 900 en adelante */
   .login-container {
     display: grid;

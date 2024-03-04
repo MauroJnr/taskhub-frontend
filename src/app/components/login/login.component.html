@@ -35,8 +35,14 @@
         <div class="error" *ngIf="errorMessage.password.mostrar">
           <p>{{errorMessage.password.text}}</p>
         </div>
+        <div class="success" *ngIf="successMessage.mostrar">
+          <p>{{successMessage.text}}</p>
+        </div>
+        <div class="error" *ngIf="loginErrorMessage.mostrar">
+          <p>{{loginErrorMessage.text}}</p>
+        </div>
       </div>
-
+      
       <button class="form-submit" (click)="loginUsuario()" >INGRESAR</button>
 
       <div class="form-footer">

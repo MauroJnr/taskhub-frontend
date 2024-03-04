@@ -60,7 +60,11 @@
         <div class="error" *ngIf="errorMessage.password.mostrar">
           <p>{{errorMessage.password.text}}</p>
         </div>
+        <div class="success" *ngIf="successMessage.mostrar">
+          <p>{{successMessage.text}}</p>
+        </div>
       </div>
+      
       <button class="form-submit" (click)="registrarUsuario()">
         REGISTRAR
       </button>

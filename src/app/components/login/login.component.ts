@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from "../../services/app.user.service";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent {
   usernameValue: string = 'ejemplo1@correo.com';
   userPassword: string = 'contraUsuario1';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   redirectToMain() {
     this.router.navigate(['/main']);
@@ -31,6 +32,16 @@ export class LoginComponent {
     },
   }
 
+  successMessage = {
+    text: "",
+    mostrar: false,
+  }
+
+  loginErrorMessage = {
+    text: "",
+    mostrar: false,
+  }
+
   public user = {
     email: "",
     password: "",
@@ -48,7 +59,7 @@ export class LoginComponent {
     elemento.type = "password";
   }
 
-  loginUsuario():void {
+  async loginUsuario() {
     console.log(this.user)
     console.log(this.errorMessage)
     this.errorMessage.count = 0;
@@ -83,11 +94,27 @@ export class LoginComponent {
     if(this.errorMessage.count == 0){
       console.log("Login usuario")
 
-      
-      // redireccionamos
-      this.redirectToMain();
-    }
-    
-  }
+      let rest = await this.userService.loginUser(
+        {
+          correo: this.user.email,
+          contraseña: this.user.password
+        }
+      );
 
+      if(rest == 0){
+        this.successMessage.text = "Usuario logeado correctamente"
+        this.successMessage.mostrar = true;
+
+        this.loginErrorMessage.text = ""
+        this.loginErrorMessage.mostrar = false;
+        // redireccionamos
+        setTimeout(() => {
+          this.redirectToMain();
+        }, 1500);
+      }else{
+        this.loginErrorMessage.text = "Credenciales incorrectas"
+        this.loginErrorMessage.mostrar = true;
+      }
+    }
+  }
 }

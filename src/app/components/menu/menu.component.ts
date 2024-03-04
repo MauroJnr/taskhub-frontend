@@ -1,13 +1,18 @@
 import { Component, HostListener } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
+
   isMenuOpen: boolean = false;
   animationState = 'closeMenu';
+
+  constructor(private router: Router){
+
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -23,7 +28,10 @@ export class MenuComponent {
       this.isMenuOpen = false;
     }
   }
-  // constructor(){
-  //   console.log("menu")
-  // }
+  
+  cerrarSesion(){
+    localStorage.removeItem('token_taskhub');
+    this.router.navigate(['/login']);
+  }
+
 }

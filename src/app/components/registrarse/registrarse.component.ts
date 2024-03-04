@@ -45,6 +45,11 @@ export class RegistrarseComponent {
     },
   }
 
+  successMessage = {
+    text: "",
+    mostrar: false,
+  }
+
   public user = {
     username: "",
     email: "",
@@ -137,16 +142,21 @@ export class RegistrarseComponent {
 
       await this.userService.registerUser(
         {
-        usuarioIngreso: this.user.username,
-        contraseña: this.user.password,
-        correo: this.user.email,
-        nombres: this.user.name,
-        apellidos: this.user.lastname
-      }
+          usuarioIngreso: this.user.username,
+          contraseña: this.user.password,
+          correo: this.user.email,
+          nombres: this.user.name,
+          apellidos: this.user.lastname
+        }
       );
 
+      this.successMessage.text = "Usuario registrado correctamente"
+      this.successMessage.mostrar = true;
       // redireccionamos
-      // this.redirectToMain();
+      setTimeout(() => {
+        this.redirectToMain();
+      }, 1500);
+      
     }
   }
 

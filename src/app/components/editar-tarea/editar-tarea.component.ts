@@ -30,11 +30,14 @@ export class EditarTareaComponent {
   date_format_str = this.d.getFullYear().toString()+"-"+((this.d.getMonth()+1).toString().length==2?(this.d.getMonth()+1).toString():"0"+(this.d.getMonth()+1).toString())+"-"+(this.d.getDate().toString().length==2?this.d.getDate().toString():"0"+this.d.getDate().toString())+"T"+((this.d.getHours().toString().length==2?this.d.getHours().toString():"0"+this.d.getHours().toString()))+":"+((this.d.getMinutes().toString().length==2)?this.d.getMinutes().toString():"0"+(this.d.getMinutes().toString())+":00");
 
   public task = {
+    idTarea: this.tasksService.taskEdit.idTarea,
     nombre: this.tasksService.taskEdit.nombre,
     prioridad: this.tasksService.taskEdit.prioridad,
-    estado: this.tasksService.taskEdit.estado,
-    fechaFin:this.date_format_str,
+    estado2: this.tasksService.taskEdit.estado,
+    estado: "",
+    fecha_fin:this.date_format_str,
     descripcion: this.tasksService.taskEdit.descripcion,
+    id_usuario: 0
   }
 
   errorMessage = {
@@ -57,7 +60,12 @@ export class EditarTareaComponent {
     },
   }
 
-  editarTarea(e:any){
+  successEdit = {
+    text: "",
+    mostrar: false
+  }
+
+  async editarTarea(e:any){
     e.preventDefault();
 
     this.errorMessage.count = 0;
@@ -81,7 +89,7 @@ export class EditarTareaComponent {
       this.errorMessage.prioridad.mostrar = false
     }
     // validacion estado
-    if(this.task.estado == "" ){
+    if(this.task.estado2 == "" ){
       this.errorMessage.estado.text = "El estado es obligatorio"
       this.errorMessage.estado.mostrar = true
       this.errorMessage.count++;
@@ -90,7 +98,7 @@ export class EditarTareaComponent {
       this.errorMessage.estado.mostrar = false
     }
     // validacion fechaFin
-    if(this.task.fechaFin == "" || this.task.fechaFin=='NaN-0NaN-0NaNT0NaN:0NaN:00'){
+    if(this.task.fecha_fin == "" || this.task.fecha_fin=='NaN-0NaN-0NaNT0NaN:0NaN:00'){
       this.errorMessage.fechaFin.text = "La fecha de vencimiento es obligatoria"
       this.errorMessage.fechaFin.mostrar = true
       this.errorMessage.count++;
@@ -101,10 +109,20 @@ export class EditarTareaComponent {
 
     // Validacion backend
     if(this.errorMessage.count == 0){
+      this.successEdit.text = "Tarea creada correctamente"
+      this.successEdit.mostrar = true;
+
       console.log("Editar tarea")
       console.log(this.task)
-      // redireccionamos
-      this.router.navigate(['/main/calendar']);
+      this.task.estado = (this.task.estado2=="Pendiente") ? ("1"):((this.task.estado2=="En progreso")?("2"):("3"))
+      this.task.id_usuario = 1;
+
+      await this.tasksService.editTarea(this.task)
+
+      setTimeout(() => {
+        // redireccionamos
+        // this.router.navigate(['/main/calendar']);
+      }, 1500);
     }
   }
 }

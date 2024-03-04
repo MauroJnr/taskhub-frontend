@@ -12,7 +12,7 @@
     <div class="dropdown-menu" *ngIf="isMenuOpen" >
         <ul>
             <li routerLink="/main/editarperfil"><a >👤Editar Perfil</a></li>
-            <li routerLink="/login">🚪Cerrar Sesión</li>
+            <li routerLink="/login" (click)="cerrarSesion()">🚪Cerrar Sesión</li>
         </ul>
     </div>
 </div>

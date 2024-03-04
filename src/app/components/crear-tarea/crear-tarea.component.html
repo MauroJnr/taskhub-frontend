@@ -22,7 +22,7 @@
       </div>
       <div class="form-group">
         <label for="status">Estado</label>
-        <select [(ngModel)]="task.estado" id="status" name="status">
+        <select [(ngModel)]="task.estado2" id="status" name="status">
           <option value="" selected>Seleccionar</option>
           <option *ngFor="let opcion of estadoOptions" [value]="opcion.texto">{{ opcion.texto }}</option>
         </select>
@@ -40,6 +40,9 @@
       <div class="form-group">
         <label for="description">Descripción</label>
         <textarea [(ngModel)]="task.descripcion" id="description" name="description"></textarea>
+        <div class="success" *ngIf="successCreate.mostrar">
+          <p>{{successCreate.text}}</p>
+        </div>
       </div>
       <div class="form-actions">
         <button type="button" class="cancel-button" routerLink="/main/calendar">Cancelar</button>

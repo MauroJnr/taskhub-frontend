@@ -52,37 +52,63 @@ export class TasksService {
 
 
     async getData(){
-        let data = await fetch("http://localhost:8080/taskhub/v1/tareas/1")
+        let token = localStorage.getItem('token_taskhub')
+        let data = await fetch(`http://localhost:8080/taskhub/v1/tareas/1`,{
+            headers:{
+                'Content-Type':'application/json',
+                'Authotization':`Bearer ${token}`
+            },
+        })
         .then(response => response.json())
         .catch(err => err)
-        this.tasks = data.tareas;
 
-        for (const task of this.tasks) {
-            task.fechaFin = new Date(task.fechaFin).toDateString();
+        // console.log(data)
 
-            if(task.estado == "1"){
-                task.estado = "Pendiente"
-            }else if(task.estado == "2"){
-                task.estado = "En progreso"
-            }else{
-                task.estado = "Terminado"
+        if(data.tareas){
+            this.tasks = data.tareas;
+
+            for (const task of this.tasks) {
+                task.fechaFin = new Date(task.fechaFin).toDateString();
+
+                if(task.estado == "1"){
+                    task.estado = "Pendiente"
+                }else if(task.estado == "2"){
+                    task.estado = "En progreso"
+                }else{
+                    task.estado = "Terminado"
+                }
             }
+
+            this.datos = [
+                {
+                    title: "Pendiente",
+                    tasks: this.tasks.filter(task => task.estado == "Pendiente")
+                },
+                {
+                    title: "En progreso",
+                    tasks: this.tasks.filter(task => task.estado == "En progreso")
+                },
+                {
+                    title: "Terminado",
+                    tasks: this.tasks.filter(task => task.estado == "Terminado")
+                }
+            ]
+        }else{
+            this.datos = [
+                {
+                    title: "Pendiente",
+                    tasks: this.tasks.filter(task => task.estado == "Pendiente")
+                },
+                {
+                    title: "En progreso",
+                    tasks: this.tasks.filter(task => task.estado == "En progreso")
+                },
+                {
+                    title: "Terminado",
+                    tasks: this.tasks.filter(task => task.estado == "Terminado")
+                }
+            ]
         }
-
-        this.datos = [
-            {
-                title: "Pendiente",
-                tasks: this.tasks.filter(task => task.estado == "Pendiente")
-            },
-            {
-                title: "En progreso",
-                tasks: this.tasks.filter(task => task.estado == "En progreso")
-            },
-            {
-                title: "Terminado",
-                tasks: this.tasks.filter(task => task.estado == "Terminado")
-            }
-        ]
         // console.log(this.datos);
         this.loading = false;
         // console.log(this.loading);
@@ -90,8 +116,13 @@ export class TasksService {
     }
 
     async getDeleteTarea(id:number){
+        let token = localStorage.getItem('token_taskhub')
         await fetch(`http://localhost:8080/taskhub/v1/tareas/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers:{
+                'Content-Type':'application/json',
+                'Authotization':`Bearer ${token}`
+            },
         })
         .then(response => response.json())
         .catch(err => err)
@@ -103,6 +134,7 @@ export class TasksService {
     }
 
     async filtrarTareas(id:number, fechaInicio:string, fechaFin:string){
+        let token = localStorage.getItem('token_taskhub')
         let data = await fetch(`http://localhost:8080/taskhub/v1/tareas/filtrar/${id}`, {
             method: 'POST',
             body: JSON.stringify({
@@ -111,6 +143,7 @@ export class TasksService {
             }),
             headers: { // enviamos la data en formato JSON
                 'Content-type': 'application/json; charset=UTF-8',
+                'Authotization':`Bearer ${token}`
             }
         })
         .then(response => response.json())
@@ -119,6 +152,38 @@ export class TasksService {
         this.tasksFiltro = data.tareas;
         this._tasksFiltro.next(this.tasksFiltro);
 
+    }
+
+    async crearTarea(tarea:any){
+        let token = localStorage.getItem('token_taskhub')
+        let data = await fetch("http://localhost:8080/taskhub/v1/tareas", {
+            method: 'POST',
+            body: JSON.stringify(tarea),
+            headers: { // enviamos la data en formato JSON
+                'Content-type': 'application/json; charset=UTF-8',
+                'Authotization':`Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .catch(err => err)
+        // console.log(data)
+        // console.log(data.tarea)
+    }
+
+    async editTarea(tarea:any){
+        let token = localStorage.getItem('token_taskhub')
+        let data = await fetch(`http://localhost:8080/taskhub/v1/tareas/${tarea.idTarea}`, {
+            method: 'PUT',
+            body: JSON.stringify(tarea),
+            headers: { // enviamos la data en formato JSON
+                'Content-type': 'application/json; charset=UTF-8',
+                'Authotization':`Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .catch(err => err)
+        console.log(data)
+        console.log(data.tarea)
     }
 
     moveTask(dropEvent: CdkDragDrop<any[]>): void{

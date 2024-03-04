@@ -16,8 +16,11 @@ export class CrearTareaComponent {
     nombre: "",
     prioridad: "",
     estado: "",
+    estado2: "",
     fechaFin: "",
+    fecha_fin: "",
     descripcion: "",
+    id_usuario: 0,
   }
 
   prioridadOptions = [
@@ -55,7 +58,12 @@ export class CrearTareaComponent {
     },
   }
 
-  crearTarea(e:any){
+  successCreate = {
+    text: "",
+    mostrar: false
+  }
+
+  async crearTarea(e:any){
 
     // console.log(e)
     e.preventDefault();
@@ -81,7 +89,7 @@ export class CrearTareaComponent {
       this.errorMessage.prioridad.mostrar = false
     }
     // validacion estado
-    if(this.task.estado == "" ){
+    if(this.task.estado2 == "" ){
       this.errorMessage.estado.text = "El estado es obligatorio"
       this.errorMessage.estado.mostrar = true
       this.errorMessage.count++;
@@ -105,12 +113,24 @@ export class CrearTareaComponent {
 
     // Validacion backend
     if(this.errorMessage.count == 0){
+
+      this.successCreate.text = "Tarea creada correctamente"
+      this.successCreate.mostrar = true;
+
       console.log("Editar tarea")
-      // console.log(this.task)
-      // redireccionamos
-      this.router.navigate(['/main/calendar']);
+      console.log(this.task)
+      this.task.fecha_fin = this.task.fechaFin;
+      this.task.estado = (this.task.estado2=="Pendiente") ? ("1"):((this.task.estado2=="En progreso")?("2"):("3"))
+      this.task.id_usuario = 6;
+
+      await this.tasksService.crearTarea(this.task)
+      setTimeout(() => {
+        // redireccionamos
+        this.router.navigate(['/main/calendar']);
+      }, 1500);
+      
     }
-    console.log(this.task)
+    // console.log(this.task)
   }
 
 }

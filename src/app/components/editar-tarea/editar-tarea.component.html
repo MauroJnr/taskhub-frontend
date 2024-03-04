@@ -22,7 +22,7 @@
       </div>
       <div class="form-group">
         <label for="status">Estado <span>*</span></label>
-        <select [(ngModel)]="task.estado" id="status" name="status">
+        <select [(ngModel)]="task.estado2" id="status" name="status">
           <option value="" selected>Seleccionar</option>
           <option *ngFor="let opcion of estadoOptions" [value]="opcion.texto">{{ opcion.texto }}</option>
         </select>
@@ -32,7 +32,7 @@
       </div>
       <div class="form-group">
         <label for="due-date">Fecha de vencimiento <span>*</span></label>
-        <input [(ngModel)]="task.fechaFin" type="datetime-local" id="due-date" name="due-date">
+        <input [(ngModel)]="task.fecha_fin" type="datetime-local" id="due-date" name="due-date">
         <div class="error" *ngIf="errorMessage.fechaFin.mostrar">
           <p>{{errorMessage.fechaFin.text}}</p>
         </div>
@@ -40,6 +40,9 @@
       <div class="form-group">
         <label for="description">Descripción</label>
         <textarea [(ngModel)]="task.descripcion" id="description" name="description"></textarea>
+        <div class="success" *ngIf="successEdit.mostrar">
+          <p>{{successEdit.text}}</p>
+        </div>
       </div>
       <div class="form-actions">
         <button type="button" class="cancel-button" routerLink="/main/calendar">Cancelar</button>
