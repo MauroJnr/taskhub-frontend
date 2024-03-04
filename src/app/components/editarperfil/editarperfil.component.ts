@@ -61,6 +61,25 @@ export class EditarperfilComponent {
   
 
   async saveChangues() {
+    this.errorMessage = {
+      count: 0,
+      username: {
+        text: "",
+        mostrar: false
+      },
+      name: {
+        text: "",
+        mostrar: false
+      },
+      lastname: {
+        text: "",
+        mostrar: false
+      },
+      newPassword: {
+        text: "",
+        mostrar: false
+      },
+    }
     this.errorMessage.count = 0;
     // validación username
     if(this.user.username == "" ){

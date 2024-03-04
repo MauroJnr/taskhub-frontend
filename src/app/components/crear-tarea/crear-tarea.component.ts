@@ -64,6 +64,25 @@ export class CrearTareaComponent {
   }
 
   async crearTarea(e:any){
+    this.errorMessage = {
+      count: 0,
+      nombre: {
+        text: "",
+        mostrar: false
+      },
+      prioridad: {
+        text: "",
+        mostrar: false
+      },
+      estado: {
+        text: "",
+        mostrar: false
+      },
+      fechaFin: {
+        text: "",
+        mostrar: false
+      },
+    }
 
     // console.log(e)
     e.preventDefault();

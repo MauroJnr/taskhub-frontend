@@ -59,8 +59,31 @@ export class RegistrarseComponent {
     confirmPassword: "",
   }
   async registrarUsuario() {
-    console.log(this.user)
-    console.log(this.errorMessage)
+    // console.log(this.user)
+    // console.log(this.errorMessage)
+    this.errorMessage = {
+      count: 0,
+      username: {
+        text: "",
+        mostrar: false
+      },
+      email: {
+        text: "",
+        mostrar: false
+      },
+      name: {
+        text: "",
+        mostrar: false
+      },
+      lastname: {
+        text: "",
+        mostrar: false
+      },
+      password: {
+        text: "",
+        mostrar: false
+      },
+    }
     
     this.errorMessage.count = 0;
 

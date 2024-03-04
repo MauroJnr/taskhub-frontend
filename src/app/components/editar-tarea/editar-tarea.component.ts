@@ -70,6 +70,25 @@ export class EditarTareaComponent {
   async editarTarea(e:any){
     e.preventDefault();
 
+    this.errorMessage = {
+      count: 0,
+      nombre: {
+        text: "",
+        mostrar: false
+      },
+      prioridad: {
+        text: "",
+        mostrar: false
+      },
+      estado: {
+        text: "",
+        mostrar: false
+      },
+      fechaFin: {
+        text: "",
+        mostrar: false
+      },
+    }
     this.errorMessage.count = 0;
     // validacion nombre
     if(this.task.nombre == "" ){

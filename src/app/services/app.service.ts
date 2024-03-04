@@ -72,8 +72,7 @@ export class TasksService {
 
             for (const task of this.tasks) {
                 let d = new Date(task.fechaFin);
-                let date_format_str = d.getFullYear().toString()+"-"+((d.getMonth()+1).toString().length==2?(d.getMonth()+1).toString():"0"+(d.getMonth()+1).toString())+"-"+(d.getDate().toString().length==2?d.getDate().toString():"0"+d.getDate().toString())+"T"+((d.getHours().toString().length==2?d.getHours().toString():"0"+d.getHours().toString()))+":"+((d.getMinutes().toString().length==2)?d.getMinutes().toString():"0"+(d.getMinutes().toString())+":00");
-
+                let date_format_str = d.getFullYear().toString()+"-"+((d.getMonth()+1).toString().length==2?(d.getMonth()+1).toString():"0"+(d.getMonth()+1).toString())+"-"+(d.getDate().toString().length==2?d.getDate().toString():"0"+d.getDate().toString())+"T"+(((d.getHours()+5).toString().length==2?(d.getHours()+5).toString():"0"+(d.getHours()+5).toString()))+":"+((d.getMinutes().toString().length==2)?d.getMinutes().toString():"0"+(d.getMinutes().toString())+":00");
 
                 // task.fechaFin = new Date(task.fechaFin).toDateString() + "" + new Date(task.fechaFin).toLocaleTimeString(); // .toDateString()
                 task.fechaFinDate = date_format_str; 
@@ -195,6 +194,7 @@ export class TasksService {
         console.log(data.tarea)
     }
 
+    // title el nombre de la lista a la que se movio
     async moveTask(dropEvent: CdkDragDrop<any[]>, title:string){
         // console.log(title)
         // previousContainer: anterior contenedor del elemento

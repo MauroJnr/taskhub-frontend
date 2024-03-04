@@ -61,6 +61,7 @@ export class CalendarComponent {
   dataCalendar = this.tasksService.tasks;
   
   events = this.dataCalendar.map((e:any)=> {
+    
     return { title: e.nombre, start: new Date(e.fechaFin), id: e.idTarea }
   });
 
@@ -89,9 +90,9 @@ export class CalendarComponent {
     // console.log(this.tasksService.loading)
     let eventos = []
     eventos = datos[0].map((e:any)=> {
-      return { title: e.nombre, start: new Date(e.fechaFin), id: e.idTarea }
+      return { title: e.nombre, start: new Date(e.fechaFinDate), id: e.idTarea }
     });
-    // console.log(eventos)
+    console.log(eventos)
     // this.events = eventos;
     this.calendarOptions.events = eventos;
     this.dataKanban = datos[1];
