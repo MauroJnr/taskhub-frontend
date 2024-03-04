@@ -121,7 +121,11 @@ export class CrearTareaComponent {
       console.log(this.task)
       this.task.fecha_fin = this.task.fechaFin;
       this.task.estado = (this.task.estado2=="Pendiente") ? ("1"):((this.task.estado2=="En progreso")?("2"):("3"))
-      this.task.id_usuario = 6;
+
+      let dataUser:string = ((localStorage.getItem('user_taskhub')==null) ? "" : String(localStorage.getItem('user_taskhub')));
+      let userid = JSON.parse(dataUser).idUsuario;
+
+      this.task.id_usuario = userid;
 
       await this.tasksService.crearTarea(this.task)
       setTimeout(() => {

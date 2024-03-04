@@ -12,7 +12,7 @@
         cdkDropList
         cdkDragPreviewContainer="parent"
         [cdkDropListData]="list.tasks"
-        (cdkDropListDropped)="moveTask($event)"
+        (cdkDropListDropped)="moveTask($event, list.title)"
         [tasks]="list.tasks"
         [title]="list.title"
     >

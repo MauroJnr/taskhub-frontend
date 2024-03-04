@@ -15,6 +15,7 @@ export class TasksService {
         prioridad: "",
         estado: "",
         fechaFin: "",
+        fechaFinDate: "",
         descripcion: "",
     };
     // observable
@@ -53,10 +54,12 @@ export class TasksService {
 
     async getData(){
         let token = localStorage.getItem('token_taskhub')
-        let data = await fetch(`http://localhost:8080/taskhub/v1/tareas/1`,{
+        let dataUser:string = ((localStorage.getItem('user_taskhub')==null) ? "" : String(localStorage.getItem('user_taskhub')));
+        let userid = JSON.parse(dataUser).idUsuario;
+        let data = await fetch(`http://localhost:8080/taskhub/v1/tareas/${userid}`,{
             headers:{
                 'Content-Type':'application/json',
-                'Authotization':`Bearer ${token}`
+                'Authorization':`Bearer ${token}`
             },
         })
         .then(response => response.json())
@@ -68,7 +71,13 @@ export class TasksService {
             this.tasks = data.tareas;
 
             for (const task of this.tasks) {
-                task.fechaFin = new Date(task.fechaFin).toDateString();
+                let d = new Date(task.fechaFin);
+                let date_format_str = d.getFullYear().toString()+"-"+((d.getMonth()+1).toString().length==2?(d.getMonth()+1).toString():"0"+(d.getMonth()+1).toString())+"-"+(d.getDate().toString().length==2?d.getDate().toString():"0"+d.getDate().toString())+"T"+((d.getHours().toString().length==2?d.getHours().toString():"0"+d.getHours().toString()))+":"+((d.getMinutes().toString().length==2)?d.getMinutes().toString():"0"+(d.getMinutes().toString())+":00");
+
+
+                // task.fechaFin = new Date(task.fechaFin).toDateString() + "" + new Date(task.fechaFin).toLocaleTimeString(); // .toDateString()
+                task.fechaFinDate = date_format_str; 
+                task.fechaFin = new Date(task.fechaFin).toDateString(); // .toDateString()
 
                 if(task.estado == "1"){
                     task.estado = "Pendiente"
@@ -121,7 +130,7 @@ export class TasksService {
             method: 'DELETE',
             headers:{
                 'Content-Type':'application/json',
-                'Authotization':`Bearer ${token}`
+                'Authorization':`Bearer ${token}`
             },
         })
         .then(response => response.json())
@@ -143,7 +152,7 @@ export class TasksService {
             }),
             headers: { // enviamos la data en formato JSON
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authotization':`Bearer ${token}`
+                'Authorization':`Bearer ${token}`
             }
         })
         .then(response => response.json())
@@ -161,7 +170,7 @@ export class TasksService {
             body: JSON.stringify(tarea),
             headers: { // enviamos la data en formato JSON
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authotization':`Bearer ${token}`
+                'Authorization':`Bearer ${token}`
             }
         })
         .then(response => response.json())
@@ -177,7 +186,7 @@ export class TasksService {
             body: JSON.stringify(tarea),
             headers: { // enviamos la data en formato JSON
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authotization':`Bearer ${token}`
+                'Authorization':`Bearer ${token}`
             }
         })
         .then(response => response.json())
@@ -186,7 +195,8 @@ export class TasksService {
         console.log(data.tarea)
     }
 
-    moveTask(dropEvent: CdkDragDrop<any[]>): void{
+    async moveTask(dropEvent: CdkDragDrop<any[]>, title:string){
+        // console.log(title)
         // previousContainer: anterior contenedor del elemento
         // container: Actual contenedor del elemento
         const { previousContainer, container, previousIndex, currentIndex } = dropEvent;
@@ -197,10 +207,53 @@ export class TasksService {
             return;
         }
         
+        console.log("anterior");
+        console.log(previousContainer.data);
+        console.log(previousIndex);
+
+        console.log("Nuevo");
+        console.log(container.data);
+        console.log(currentIndex);
+
+        // moveItemInArray(container.data, previousIndex, currentIndex) // si es el mismo contenedor, cambia de posicion
+        // transferArrayItem(previousContainer.data, container.data, previousIndex, currentIndex) // si es otro contenedor, se cambia a ese contenedor
         isSameContainer  
             ? moveItemInArray(container.data, previousIndex, currentIndex) // si es el mismo contenedor, cambia de posicion
-            : transferArrayItem(previousContainer.data, container.data, previousIndex, currentIndex) // si es otro contenedor, se cambia a ese contenedor
+            : await this.updateTaskEstado(previousContainer.data, container.data, previousIndex, currentIndex, title) // si es otro contenedor, se cambia a ese contenedor
     }
 
-    
+    async updateTaskEstado(anterior:any, nuevo:any, indexAnterior:number, indexActual:number, title:string){
+        transferArrayItem(anterior, nuevo, indexAnterior, indexActual)
+        // console.log(nuevo.data)
+        // console.log(nuevo.data[indexActual].idTarea)
+
+        let taskId = nuevo[indexActual].idTarea;
+        let task = this.tasks.filter(task => task.idTarea === taskId)[0];
+        // console.log(task)
+        // this.tasks.map((task:any) => {
+        //     if(task.idTarea !== taskId)
+        // })
+        
+        let d = new Date(task.fechaFin);
+        let date_format_str = d.getFullYear().toString()+"-"+((d.getMonth()+1).toString().length==2?(d.getMonth()+1).toString():"0"+(d.getMonth()+1).toString())+"-"+(d.getDate().toString().length==2?d.getDate().toString():"0"+d.getDate().toString())+"T"+((d.getHours().toString().length==2?d.getHours().toString():"0"+d.getHours().toString()))+":"+((d.getMinutes().toString().length==2)?d.getMinutes().toString():"0"+(d.getMinutes().toString())+":00");
+
+        console.log({
+            idTarea: taskId,
+            nombre:task.nombre,
+            descripcion:task.descripcion,  
+            fecha_fin:date_format_str,
+            prioridad:task.prioridad,
+            estado: (title=="Pendiente") ? ("1"):((title=="En progreso")?("2"):("3")),
+            id_usuario: nuevo[indexActual].idUsuario,
+        })
+        await this.editTarea({
+            idTarea: taskId,
+            nombre:task.nombre,
+            descripcion:task.descripcion,  
+            fecha_fin:task.fechaFin,
+            prioridad:task.prioridad,
+            estado: (title=="Pendiente") ? ("1"):((title=="En progreso")?("2"):("3")),
+            id_usuario: nuevo[indexActual].idUsuario,
+        });
+    }
 }

@@ -94,6 +94,10 @@
     height: 100%;
 }
 
+/* .fc .fc-toolbar-title{
+    color: aqua !important;
+} */
+
 .calendar::-webkit-scrollbar{
     width: 9px;
     height: 9px;

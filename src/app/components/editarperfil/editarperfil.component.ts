@@ -11,6 +11,14 @@ import { UserService } from "../../services/app.user.service";
 export class EditarperfilComponent {
   constructor( private router: Router, private floatingSuccessService:FloatingSuccessService, private userService: UserService) {  
     this.successMessage.mostrar=false;
+
+    let dataUser:string = ((localStorage.getItem('user_taskhub')==null) ? "" : String(localStorage.getItem('user_taskhub')));
+    let userD = JSON.parse(dataUser);
+    this.user.username = userD.usuarioIngreso;
+    this.user.name = userD.nombres;
+    this.user.lastname = userD.apellidos;
+    // this.user.name = userD.nombres;
+
   }
 
   public user = {
@@ -119,15 +127,17 @@ export class EditarperfilComponent {
     if(this.errorMessage.count == 0){
       console.log("Login usuario")
 
-      await this.userService.editUser(
-        {
-          usuarioIngreso: this.user.username,
-          contraseña: this.user.newPassword,
-          correo: "perez@gmail.com",
-          nombres: this.user.name,
-          apellidos: this.user.lastname
-        }
-      );
+      let userDataUpdate:any = {
+        usuarioIngreso: this.user.username,
+        nombres: this.user.name,
+        apellidos: this.user.lastname
+      }
+      if(this.user.newPassword.trim()!==""){
+        userDataUpdate.contraseña = this.user.newPassword;
+      }
+
+      console.log(userDataUpdate)
+      await this.userService.editUser(userDataUpdate);
 
       this.successMessage.text = "Usuario actualizado correctamente"
       this.successMessage.mostrar = true;

@@ -61,6 +61,7 @@ export class UserService {
         if(data.token !== undefined){ // se logeo
             // console.log(data.token)
             localStorage.setItem('token_taskhub', data.token)
+            localStorage.setItem('user_taskhub', JSON.stringify(data.usuarioDetalleDto))
             return 0;
             // console.log(data.usuario)
         }
@@ -69,11 +70,13 @@ export class UserService {
 
     async editUser(usuario:any){
         let token = localStorage.getItem('token_taskhub')
-        let data = await fetch(`http://localhost:8080/taskhub/v1/usuarios/1`,{
+        let dataUser:string = ((localStorage.getItem('user_taskhub')==null) ? "" : String(localStorage.getItem('user_taskhub')));
+        let userid = JSON.parse(dataUser).idUsuario;
+        let data = await fetch(`http://localhost:8080/taskhub/v1/usuarios/${userid}`,{
             method: 'PUT',
             headers:{
                 'Content-Type':'application/json',
-                'Authotization':`Bearer ${token}`
+                'Authorization':`Bearer ${token}`
             },
             body:JSON.stringify(usuario)
         })
@@ -83,6 +86,13 @@ export class UserService {
         // console.log(data);
         if(data.usuario !== undefined){ // se logeo
             console.log(data.usuario)
+            localStorage.setItem('user_taskhub', JSON.stringify({
+                idUsuario: data.usuario.idUsuario,
+                usuarioIngreso:data.usuario.usuarioIngreso,
+                correo:data.usuario.correo,
+                nombres:data.usuario.nombres,
+                apellidos:data.usuario.apellidos
+            }))
             // console.log(data.token)
             // localStorage.setItem('token_taskhub', data.token)
             return 0;

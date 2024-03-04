@@ -31,6 +31,7 @@ export class MenuComponent {
   
   cerrarSesion(){
     localStorage.removeItem('token_taskhub');
+    localStorage.removeItem('user_taskhub');
     this.router.navigate(['/login']);
   }
 

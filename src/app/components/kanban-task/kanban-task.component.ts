@@ -8,7 +8,9 @@ import { TasksService } from "../../services/app.service";
   styleUrls: ['./kanban-task.component.css']
 })
 export class KanbanTaskComponent {
-  constructor( private router: Router, private floatingDeleteService:FloatingDeleteService, private tasksService: TasksService) {  }
+  constructor( private router: Router, private floatingDeleteService:FloatingDeleteService, private tasksService: TasksService) {
+    
+  }
 
   @Input()
   public task = {

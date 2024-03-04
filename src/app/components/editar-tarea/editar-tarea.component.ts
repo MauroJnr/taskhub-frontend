@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { TasksService } from "../../services/app.service";
+import { TasksService } from '../../services/app.service';
 import { Router } from '@angular/router';
+import Task from 'app/interfaces/task';
 
 @Component({
   selector: 'app-editar-tarea',
@@ -26,8 +27,8 @@ export class EditarTareaComponent {
   ];
 
   // fecha:Date = new Date(this.tasksService.taskEdit.fechaFin);
-  d = new Date(this.tasksService.taskEdit.fechaFin);
-  date_format_str = this.d.getFullYear().toString()+"-"+((this.d.getMonth()+1).toString().length==2?(this.d.getMonth()+1).toString():"0"+(this.d.getMonth()+1).toString())+"-"+(this.d.getDate().toString().length==2?this.d.getDate().toString():"0"+this.d.getDate().toString())+"T"+((this.d.getHours().toString().length==2?this.d.getHours().toString():"0"+this.d.getHours().toString()))+":"+((this.d.getMinutes().toString().length==2)?this.d.getMinutes().toString():"0"+(this.d.getMinutes().toString())+":00");
+  // d = new Date(this.tasksService.taskEdit.fechaFin);
+  // date_format_str = this.d.getFullYear().toString()+"-"+((this.d.getMonth()+1).toString().length==2?(this.d.getMonth()+1).toString():"0"+(this.d.getMonth()+1).toString())+"-"+(this.d.getDate().toString().length==2?this.d.getDate().toString():"0"+this.d.getDate().toString())+"T"+((this.d.getHours().toString().length==2?this.d.getHours().toString():"0"+this.d.getHours().toString()))+":"+((this.d.getMinutes().toString().length==2)?this.d.getMinutes().toString():"0"+(this.d.getMinutes().toString())+":00");
 
   public task = {
     idTarea: this.tasksService.taskEdit.idTarea,
@@ -35,7 +36,8 @@ export class EditarTareaComponent {
     prioridad: this.tasksService.taskEdit.prioridad,
     estado2: this.tasksService.taskEdit.estado,
     estado: "",
-    fecha_fin:this.date_format_str,
+    // fecha_fin:this.date_format_str,
+    fecha_fin:this.tasksService.taskEdit.fechaFinDate,
     descripcion: this.tasksService.taskEdit.descripcion,
     id_usuario: 0
   }
@@ -109,13 +111,17 @@ export class EditarTareaComponent {
 
     // Validacion backend
     if(this.errorMessage.count == 0){
-      this.successEdit.text = "Tarea creada correctamente"
+      this.successEdit.text = "Tarea editada correctamente"
       this.successEdit.mostrar = true;
 
       console.log("Editar tarea")
       console.log(this.task)
       this.task.estado = (this.task.estado2=="Pendiente") ? ("1"):((this.task.estado2=="En progreso")?("2"):("3"))
-      this.task.id_usuario = 1;
+
+      let dataUser:string = ((localStorage.getItem('user_taskhub')==null) ? "" : String(localStorage.getItem('user_taskhub')));
+      let userid = JSON.parse(dataUser).idUsuario;
+
+      this.task.id_usuario = userid;
 
       await this.tasksService.editTarea(this.task)
 

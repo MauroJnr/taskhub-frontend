@@ -15,8 +15,8 @@ export class KanbanComponent {
     // console.log(this.allTasks)
   }
   
-  moveTask(dropEvent: CdkDragDrop<any[]>): void{
-    this.tasksService.moveTask(dropEvent)
+  async moveTask(dropEvent: CdkDragDrop<any[]>, title:string){
+    await this.tasksService.moveTask(dropEvent, title)
   }
 
 

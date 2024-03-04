@@ -105,12 +105,10 @@ export class CalendarComponent {
       this.router.navigate(['/main/editartarea']);
     }
     info.el.ondblclick = function() {
-      console.log('Event: ', info.event);
-      console.log('Event: ', info.event.title);
-      console.log('Event: ', info.event.start);
-      console.log('Event: ', info.event.id);
-
-      // this.tasksService.taskEdit = this.tasksService.tasks.filter((task:any) => task.idTarea == Number(info.event.id))[0];
+      // console.log('Event: ', info.event);
+      // console.log('Event: ', info.event.title);
+      // console.log('Event: ', info.event.start);
+      // console.log('Event: ', info.event.id);
 
       // this.editarTaksSelect();
       console.log(lista)
@@ -142,6 +140,7 @@ export class CalendarComponent {
 
     if (this.fechaInicio == '' || this.fechaFin == ''){
       console.log("Debe seleccionar ambas fechas")
+      this.mostrarCalendar();
     }else if(this.fechaInicio > this.fechaFin){
       console.log("La fecha de inicio es mayor a la fecha de fin")
     }else if(this.fechaInicio == this.fechaFin){
@@ -152,7 +151,9 @@ export class CalendarComponent {
       this.kanban = false;
       this.filtro = true;
 
-      await this.tasksService.filtrarTareas(1,this.fechaInicio,this.fechaFin);
+      let dataUser:string = ((localStorage.getItem('user_taskhub')==null) ? "" : String(localStorage.getItem('user_taskhub')));
+      let userid = JSON.parse(dataUser).idUsuario;
+      await this.tasksService.filtrarTareas(userid,this.fechaInicio,this.fechaFin);
     }
 
   }
